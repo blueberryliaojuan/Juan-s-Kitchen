@@ -1,0 +1,28 @@
+main {
+  /* height: calc(100vh - 12rem);
+  overflow: auto; */
+  padding-top: 7rem;
+  background-color: #ebe3e0;
+}
+.carousel-cell {
+  width: 100%;
+}
+
+.carousel-cell img {
+  width: 100%;
+  height: auto;
+}
+
+/* enable Flickity by default. Ensures that Flickity waits until CSS has loaded to calculate the height of the cells */
+.carousel:after {
+  content: "flickity";
+  display: none; /* hide :after */
+}
+
+.flickity-viewport {
+  height: 26rem !important; /* Change to your desired height */
+}
+
+main > .container {
+  padding-bottom: 15rem;
+}

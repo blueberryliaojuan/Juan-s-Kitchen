@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap for style -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CSS for flickity -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+
+    <!-- my own css -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+
+    <title>Juan's Kitchen</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <!-- Brand  Logo -->
+        <a
+          href="/"
+          class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <img class="logo" src="../logo.png" alt="" />
+        </a>
+
+        <!-- Hamburger Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link" aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Menus</a>
+            </li>
+            <li class="nav-item">
+              <a href="./contact.html" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Menus</h1>
+        <div class="container px-4 py-4">
+          <h3 class="pb-2 border-bottom py-3">Appetizers</h3>
+          <div id="appetizers-carousel">
+            <!-- <div class="carousel-cell py-2" >
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <picture>
+                      <source
+                        media="(max-width: 600px)"
+                        srcset="../img/Appetizers01.jpg"
+                      />
+                      <source
+                        media="(min-width: 601px)"
+                        srcset="../img/Appetizers01s.jpg"
+                      />
+                      <img src="../img/Appetizers01.jpg" alt="cat" />
+                    </picture>
+
+                    <div class="card-body">
+                      <p class="card-text">Orange Shrimp Salad with Avocado</p>
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">$25.00</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <img src="../img/dish00.jpg" alt="" />
+                    <div class="card-body">
+                      <p class="card-text">Orange Shrimp Salad with Avocado</p>
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">$25.00</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <img src="../img/dish00.jpg" alt="" />
+                    <div class="card-body">
+                      <p class="card-text">Orange Shrimp Salad with Avocado</p>
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">$25.00</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="container px-4 py-4">
+          <h3 class="pb-2 border-bottom py-3">Main Courses</h3>
+          <div id="mainCourses-carousel"></div>
+        </div>
+        <div class="container px-4 py-4">
+          <h3 class="pb-2 border-bottom">Vegetarian Specials</h3>
+          <div id="vegetarian-carousel"></div>
+        </div>
+        <div class="container px-4 py-4">
+          <h3 class="pb-2 border-bottom">Staple Food</h3>
+          <div id="staple-carousel"></div>
+        </div>
+        <div class="container px-4 py-4">
+          <h3 class="pb-2 border-bottom">Desserts</h3>
+          <div id="desserts-carousel"></div>
+        </div>
+        <div class="container px-4 py-4">
+          <h3 class="pb-2 border-bottom">Beverages</h3>
+          <div id="beverages-carousel"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- footer  -->
+    <div id="footer">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+      >
+        <div class="col-md-4 d-flex align-items-center">
+          <a
+            href="/"
+            class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+          >
+            <svg class="bi" width="30" height="24">
+              <use xlink:href="#bootstrap" />
+            </svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary"
+            >&copy; 2024 Juan's Kitchen, Inc</span
+          >
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex pe-5">
+          <li class="ms-3">
+            <a class="text-body-secondary" href="#">
+              <ion-icon name="logo-facebook" class="h4"></ion-icon>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class="text-body-secondary" href="#">
+              <ion-icon name="logo-pinterest" class="h4"></ion-icon>
+            </a>
+          </li>
+          <li class="ms-3">
+            <a class="text-body-secondary" href="#">
+              <ion-icon name="logo-instagram" class="h4"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- ****************************************** -->
+    <!-- ****************************************** -->
+    <!-- JS part -->
+
+    <!-- import ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    <script>
+      const generateCarouselContent = (arr) => {
+        let htmlContent = "";
+
+        // Chunk array into groups of 3,  becasue I prepard 9 picture and each 3 will be grouped into a slider page
+        // only the beveragesArr is 6 items, but its 2 time of 3, so it's also workable with this function
+        for (let i = 0; i < arr.length; i += 3) {
+          const chunk = arr.slice(i, i + 3);
+
+          htmlContent += `
+      <div class="carousel-cell py-2">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          ${chunk
+            .map(
+              (item) => `
+            <div class="col">
+              <div class="card shadow-sm" >
+                 <picture>
+                      <source
+                        media="(max-width: 768px)"
+                        srcset="${item.urls}"
+                      />
+                      <source
+                        media="(min-width: 769px)"
+                        srcset="${item.url}"
+                      />
+                      <img src="${item.url}" ${item.lable || "Dish"}"  />
+                    </picture>
+                <div class="card-body">
+                  <p class="card-text">${item.lable || "Delicious Dish"}</p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">${item.price}</small>
+                  </div>
+                </div>
+              </div>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>`;
+        }
+
+        return htmlContent;
+      };
+
+      const generateCarousel = (elem) => {
+        // initialize the flickity to the dom which is elem
+        //new is to create a new instance of the flickity
+        return (flkty = new Flickity(elem, {
+          // set options to the new instance of the flickity we created
+          // the flipity instance will have all the seetings that we are going to set and work as what we want
+          cellAlign: "center", //Align cells within the carousel element. I set it to center
+          pageDots: true, //true means I need to show the dots
+          contain: true, //Contains cells to carousel element to prevent excess scroll at beginning or end. Has no effect if wrapAround: true.
+          pauseAutoPlayOnHover: false, // auto play continues when user hovers over carousel
+          prevNextButtons: false, //this is to hidden the previous and next buttons
+        }));
+      };
+
+      let appetizersArr = [
+        {
+          lable: "Seaweed Salad",
+          price: "$10.00",
+          url: "../img/Appetizers01.jpg",
+          urls: "../img/Appetizers01s.jpg",
+        },
+        {
+          lable: "Fresh Walnut Salad",
+          price: "$10.00",
+          url: "../img/Appetizers02.jpg",
+          urls: "../img/Appetizers02s.jpg",
+        },
+        {
+          lable: "Salmon and Bean Sprout Salad",
+          price: "$18.00",
+          url: "../img/Appetizers03.jpg",
+          urls: "../img/Appetizers03s.jpg",
+        },
+        {
+          lable: "Scallion Oil Abalone",
+          price: "$35.00",
+          url: "../img/Appetizers04.jpg",
+          urls: "../img/Appetizers04s.jpg",
+        },
+        {
+          lable: "Orange Shrimp Salad with Avocadod",
+          price: "$16.00",
+          url: "../img/Appetizers05.jpg",
+          urls: "../img/Appetizers05s.jpg",
+        },
+        {
+          lable: "Red Dates and Tremella Soup",
+          price: "$10.00",
+          url: "../img/Appetizers06.jpg",
+          urls: "../img/Appetizers06s.jpg",
+        },
+        {
+          lable: "Plum Cherry Tomatoes",
+          price: "$12.00",
+          url: "../img/Appetizers07.jpg",
+          urls: "../img/Appetizers07s.jpg",
+        },
+        {
+          lable: "Coconut Cucumber Jelly",
+          price: "$12.00",
+          url: "../img/Appetizers08.jpg",
+          urls: "../img/Appetizers08s.jpg",
+        },
+        {
+          lable: "Osmanthus Lotus Root",
+          price: "$15.00",
+          url: "../img/Appetizers09.jpg",
+          urls: "../img/Appetizers09s.jpg",
+        },
+      ];
+
+      let appetizersCarousel = document.querySelector("#appetizers-carousel");
+      appetizersCarousel.innerHTML = generateCarouselContent(appetizersArr);
+      generateCarousel(appetizersCarousel);
+
+      let mainCoursesArr = [
+        {
+          lable: "Eel Fillet",
+          price: "$35.00",
+          url: "../img/MainCourses01.jpg",
+          urls: "../img/MainCourses01s.jpg",
+        },
+        {
+          lable: "Grilled Lamb Shoulder",
+          price: "$24.00",
+          url: "../img/MainCourses02.jpg",
+          urls: "../img/MainCourses02s.jpg",
+        },
+        {
+          lable: "Steamed Grouper",
+          price: "$25.00",
+          url: "../img/MainCourses03.jpg",
+          urls: "../img/MainCourses03s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/MainCourses04.jpg",
+          urls: "../img/MainCourses04s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/MainCourses05.jpg",
+          urls: "../img/MainCoursess05s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/MainCourses06.jpg",
+          urls: "../img/MainCoursess06s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/MainCourses07.jpg",
+          urls: "../img/MainCoursess07s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/MainCourses08.jpg",
+          urls: "../img/MainCoursess08s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/MainCourses09.jpg",
+          urls: "../img/MainCoursess09s.jpg",
+        },
+      ];
+      const mainCoursesCarousel = document.querySelector(
+        "#mainCourses-carousel"
+      );
+      mainCoursesCarousel.innerHTML = generateCarouselContent(mainCoursesArr);
+      generateCarousel(mainCoursesCarousel);
+
+      let vegetarianArr = [
+        {
+          lable: "Vegetable Spring Rolls",
+          price: "$10.00",
+          url: "../img/Vegetarian01.jpg",
+          urls: "../img/Vegetarian01s.jpg",
+        },
+        {
+          lable: "Stir-fried vegetables",
+          price: "$12.00",
+          url: "../img/Vegetarian02.jpg",
+          urls: "../img/Vegetarian02s.jpg",
+        },
+        {
+          lable: "Cold Cowpea salad",
+          price: "$10.00",
+          url: "../img/Vegetarian03.jpg",
+          urls: "../img/Vegetarian03s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Vegetarian04.jpg",
+          urls: "../imgVegetarian04s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Vegetarian05.jpg",
+          urls: "../img/Vegetarian05s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Vegetarian06.jpg",
+          urls: "../img/Vegetarian06s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Vegetarian07.jpg",
+          urls: "../img/Vegetarian07s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Vegetarian08.jpg",
+          urls: "../img/Vegetarian08s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Vegetarian09.jpg",
+          urls: "../img/Vegetarian09s.jpg",
+        },
+      ];
+      const vegetarianCarousel = document.querySelector("#vegetarian-carousel");
+      vegetarianCarousel.innerHTML = generateCarouselContent(vegetarianArr);
+      generateCarousel(vegetarianCarousel);
+
+      let stapleArr = [
+        {
+          lable: "Seafood Noodles",
+          price: "$12.00",
+          url: "../img/staple01.jpg",
+          urls: "../img/staple01s.jpg",
+        },
+        {
+          lable: "Shrimp and Vegetable Rolls",
+          price: "$15.00",
+          url: "../img/staple02.jpg",
+          urls: "../img/staple02s.jpg",
+        },
+        {
+          lable: "Shrimp Sushi Roll",
+          price: "$15.00",
+          url: "../img/staple03.jpg",
+          urls: "../img/staple03s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/staple04.jpg",
+          urls: "../imgstaple04s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/staple05.jpg",
+          urls: "../img/staple05s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/staple06.jpg",
+          urls: "../img/staple06s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/staple07.jpg",
+          urls: "../img/staple07s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/staple08.jpg",
+          urls: "../img/staple08s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/staple09.jpg",
+          urls: "../img/staple09s.jpg",
+        },
+      ];
+      const stapleCarousel = document.querySelector("#staple-carousel");
+      stapleCarousel.innerHTML = generateCarouselContent(stapleArr);
+      generateCarousel(stapleCarousel);
+
+      let dessertsArr = [
+        {
+          lable: "Coconut Waffles",
+          price: "$6.00",
+          url: "../img/Desserts01.jpg",
+          urls: "../img/Desserts01s.jpg",
+        },
+        {
+          lable: "Chocolate Cinnamon Balls",
+          price: "$8.00",
+          url: "../img/Desserts02.jpg",
+          urls: "../img/Desserts02s.jpg",
+        },
+        {
+          lable: "Blueberry Muffins",
+          price: "$4.00",
+          url: "../img/Desserts03.jpg",
+          urls: "../img/Desserts03s.jpg",
+        },
+        {
+          lable: "Chocolate Pumpkin Bread",
+          price: "$7",
+          url: "../img/Desserts04.jpg",
+          urls: "../imgDesserts04s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Desserts05.jpg",
+          urls: "../img/Desserts05s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Desserts06.jpg",
+          urls: "../img/Desserts06s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Desserts07.jpg",
+          urls: "../img/Desserts07s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Desserts08.jpg",
+          urls: "../img/Desserts08s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Desserts09.jpg",
+          urls: "../img/Desserts09s.jpg",
+        },
+      ];
+      const dessertsCarousel = document.querySelector("#desserts-carousel");
+      dessertsCarousel.innerHTML = generateCarouselContent(dessertsArr);
+      generateCarousel(dessertsCarousel);
+
+      let beveragesArr = [
+        {
+          lable: "Pomegranate wine",
+          price: "$12.00",
+          url: "../img/Beverages04.jpg",
+          urls: "../img/Beverages04s.jpg",
+        },
+        {
+          lable: "Mulberry Smoothie",
+          price: "$10.00",
+          url: "../img/Beverages03.jpg",
+          urls: "../img/Beverages03s.jpg",
+        },
+        {
+          lable: "Grapefruit wine",
+          price: "$12.00",
+          url: "../img/Beverages05.jpg",
+          urls: "../img/Beverages05s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Beverages01.jpg",
+          urls: "../img/Beverages01s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Beverages02.jpg",
+          urls: "../img/Beverages02s.jpg",
+        },
+        {
+          lable: "",
+          price: "$30.00",
+          url: "../img/Beverages06.jpg",
+          urls: "../img/Beverages06s.jpg",
+        },
+      ];
+      const beveragesCarousel = document.querySelector("#beverages-carousel");
+      beveragesCarousel.innerHTML = generateCarouselContent(beveragesArr);
+      generateCarousel(beveragesCarousel);
+    </script>
+  </body>
+</html>

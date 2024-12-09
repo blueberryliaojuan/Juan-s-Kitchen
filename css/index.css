@@ -1,0 +1,65 @@
+/* common css for all pages */
+
+body {
+  background-color: #fff;
+}
+.logo {
+  height: 2rem;
+  display: block;
+}
+
+nav {
+  position: fixed;
+  background-color: #fff;
+}
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #fff;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000; /* Higher than FullPage.js sections */
+}
+
+.nav-link {
+  color: #dcbdae;
+}
+.nav-link:visited {
+  color: #dcbdae;
+}
+.nav-pills .nav-link.active {
+  background-color: #ab957e;
+}
+
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background-color: #ab957e;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  background-color: #ab957e;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #956680;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #ab957e;
+}
+
+.btn-primary:visited {
+  background-color: #956680;
+}
+
+.card-text {
+  height: 3rem;
+}
+
+ion-icon {
+  color: #ab957e !important;
+}

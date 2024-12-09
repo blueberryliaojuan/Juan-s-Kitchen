@@ -1,0 +1,7 @@
+#map {
+  height: 600px;
+}
+
+.fp-slides {
+  height: calc(100vh - 10rem);
+}
