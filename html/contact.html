@@ -17,6 +17,12 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- my own css -->
     <link rel="stylesheet" href="../css/index.css" />
     <link rel="stylesheet" href="../css/contact.css" />
@@ -25,7 +31,7 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top py-5">
       <div class="container-fluid">
         <!-- Brand  Logo -->
         <a
@@ -133,6 +139,37 @@
           </div>
         </form>
       </div>
+      <!-- modal -->
+      <div
+        class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5"
+        tabindex="-1"
+        role="dialog"
+        id="modalSheet"
+      >
+        <div
+          class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5"
+          tabindex="-1"
+          role="dialog"
+          id="modalSheet"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+              <div class="modal-header border-bottom-0">
+                <h1 class="modal-title fs-5">Thank you!</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  id="closeModalButton"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body py-0">
+                <p>Form submitted successfully</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- footer  -->
@@ -191,6 +228,9 @@
     <script>
       // target the form element with the id 'contactForm'
       const form = document.getElementById("contactForm");
+      const modal = document.getElementById("modalSheet");
+      modal.classList.remove("d-block"); // Remove the class to hide the modal
+      modal.classList.add("d-none"); // add a class to hide it
 
       // Add an event listener for the form submission
       form.addEventListener("submit", function (event) {
@@ -214,8 +254,19 @@
         // Then we can submit the form to the server or send to an email address with a plug in
 
         // Show a confirmation alert
-        alert("Form submitted successfully!");
+        // alert("Form submitted successfully!");
+        modal.classList.add("d-block"); // add the class to show the modal
+        modal.classList.remove("d-none"); //  add a class to show it
       });
+      // Function to close the modal
+      function shutOffModal() {
+        modal.classList.remove("d-block"); // Remove the class to hide the modal
+        modal.classList.add("d-none"); // add a class to hide it
+      }
+
+      // Attach event listener to the close button
+      const closeModalButton = document.getElementById("closeModalButton");
+      closeModalButton.addEventListener("click", shutOffModal);
     </script>
   </body>
 </html>

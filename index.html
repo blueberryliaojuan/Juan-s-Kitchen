@@ -15,8 +15,10 @@
 *   NO. A01370784
 *   Term Project Dec,2024
 *   Plugins: Bootstrap, Fullpage, Leaflet, Flickity, AOS
-*   GitHub: 
+*   GitHub: https://github.com/blueberryliaojuan/Juan-s-Kitchen
 *   I cooked and photographed all the dishes myself, so I did not cite the photos
+*   The icons are from ionicons
+*   Three avartars are from adobe stock with our student account
 ****************************************
 ****************************************
 */ -->
@@ -39,6 +41,12 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- fullpage plugin -->
     <!-- Ref:  https://alvarotrigo.com/fullPage/examples/ -->
@@ -77,14 +85,14 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top py-5">
       <div class="container-fluid">
         <!-- Brand  Logo -->
         <a
           href="/"
           class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
         >
-          <img class="logo" src="./logo.png" alt="" />
+          <img class="logo" src="./logo.png" alt="logo" />
         </a>
 
         <!-- Hamburger Button -->
@@ -126,7 +134,7 @@
               <img
                 src="./img/dish00.jpg"
                 class="d-block mx-lg-auto img-fluid"
-                alt="Bootstrap Themes"
+                alt="a famouse dish in our restaurant"
                 width="700"
                 height="500"
                 loading="lazy"
@@ -162,7 +170,10 @@
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
               <div class="card shadow-sm">
-                <img src="./img/MainCourses07.jpg" alt="" />
+                <img
+                  src="./img/MainCourses07.jpg"
+                  alt="Fried Octopus with Vegetables"
+                />
                 <div class="card-body">
                   <p class="card-text">Fried Octopus with Vegetables</p>
                   <div
@@ -176,7 +187,10 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <img src="./img/MainCourses04.jpg" alt="" />
+                <img
+                  src="./img/MainCourses04.jpg"
+                  alt="Garlic Vermicelli Lobster"
+                />
                 <div class="card-body">
                   <p class="card-text">Garlic Vermicelli Lobster</p>
                   <div
@@ -190,14 +204,17 @@
             </div>
             <div class="col">
               <div class="card shadow-sm">
-                <img src="./img/MainCourses08.jpg" alt="" />
+                <img
+                  src="./img/MainCourses08.jpg"
+                  alt="Fried Sea Cucumber with Vegetables"
+                />
                 <div class="card-body">
                   <p class="card-text">Fried Sea Cucumber with Vegetables</p>
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
                     <div class="btn-group"></div>
-                    <small class="text-body-secondary">$45.00</small>
+                    <small class="text-body-secondary">$35.00</small>
                   </div>
                 </div>
               </div>
@@ -209,6 +226,9 @@
         <div class="container">
           <!-- Carousel -->
           <div id="textCarousel" class="carousel slide" data-bs-ride="carousel">
+            <h2 class="text-center fw-bold text-body-emphasis mb-5">
+              TRUST OUR CLIENTS
+            </h2>
             <!-- Indicators/Dots -->
             <div class="carousel-indicators">
               <button
@@ -238,9 +258,9 @@
               <!-- First Slide -->
               <div class="carousel-item active">
                 <div
-                  class="d-flex flex-column align-items-center justify-content-center"
-                  style="height: 300px; background-color: #e3d8ca; color: #fff"
+                  class="carousel-content d-flex flex-column align-items-center justify-content-center"
                 >
+                  <img src="./img/avartar01.jpg" alt="sophia photo" />
                   <h3>Sophia W., Vancouver</h3>
                   <p class="text-muted px-5 py-3">
                     Juan’s Kitchen is my ultimate go-to for comfort food! Their
@@ -254,9 +274,9 @@
               <!-- Second Slide -->
               <div class="carousel-item">
                 <div
-                  class="d-flex flex-column align-items-center justify-content-center"
-                  style="height: 300px; background-color: #e3d8ca; color: #fff"
+                  class="carousel-content d-flex flex-column align-items-center justify-content-center"
                 >
+                  <img src="./img/avartar02.jpg" alt="mark photo" />
                   <h3>Mark H., Burnaby</h3>
                   <p class="text-muted px-5 py-3">
                     I visited Juan’s Kitchen with my family, and it was
@@ -271,9 +291,9 @@
               <!-- Third Slide -->
               <div class="carousel-item">
                 <div
-                  class="d-flex flex-column align-items-center justify-content-center"
-                  style="height: 300px; background-color: #e3d8ca; color: #fff"
+                  class="carousel-content d-flex flex-column align-items-center justify-content-center"
                 >
+                  <img src="./img/avartar03.jpg" alt="emma photo" />
                   <h3>Emma R., Richmond</h3>
                   <p class="text-muted px-5 py-3">
                     Juan’s Kitchen’s loyalty program is amazing! I’ve earned so

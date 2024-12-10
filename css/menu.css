@@ -1,7 +1,7 @@
 main {
   /* height: calc(100vh - 12rem);
   overflow: auto; */
-  padding-top: 7rem;
+  padding-top: 12rem;
   background-color: #ebe3e0;
 }
 .carousel-cell {
@@ -20,8 +20,36 @@ main {
 }
 
 .flickity-viewport {
-  height: 26rem !important; /* Change to your desired height */
+  height: 26rem !important;
 }
+@media screen and (min-width: 768px) and (max-width: 1366px) {
+  .flickity-viewport {
+    height: 28rem !important;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .flickity-viewport {
+    height: 38rem !important;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 575px) {
+  .flickity-viewport {
+    height: 90rem !important;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 499px) {
+  .flickity-viewport {
+    height: 80rem !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .flickity-viewport {
+    height: 70rem !important;
+  }
+}
+/* .flickity-slider {
+  padding: 30px;
+} */
 
 main > .container {
   padding-bottom: 15rem;
