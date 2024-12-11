@@ -228,9 +228,27 @@
     <script>
       // target the form element with the id 'contactForm'
       const form = document.getElementById("contactForm");
+      // Get the modal element by its ID
       const modal = document.getElementById("modalSheet");
-      modal.classList.remove("d-block"); // Remove the class to hide the modal
-      modal.classList.add("d-none"); // add a class to hide it
+
+      // Function to close the modal
+      function shutOffModal() {
+        // Remove the class to hide the modal
+        //if it is currently displayed,the modal will be hidden
+        modal.classList.remove("d-block"); // Remove the class to hide the modal
+        modal.classList.add("d-none"); // add a class to hide it
+        //the above two classes were made by bootstrap
+      }
+
+      // Function to close the modal
+      function turnOnModal() {
+        //since we used bootstrap modal dialog, we need to change the class of the modal dialog
+        modal.classList.add("d-block"); // add the class to show the modal
+        modal.classList.remove("d-none"); //  add a class to show it
+      }
+
+      //call the function we defined to ensure the modal is hidde
+      shutOffModal();
 
       // Add an event listener for the form submission
       form.addEventListener("submit", function (event) {
@@ -238,14 +256,17 @@
         event.preventDefault();
 
         // If the API requires formdate, we can make it into form data
-
+        // new is to create a FormData object to capture the form's data
         const formData = new FormData(form);
+
+        //Extract and structure the form data into a JavaScript object
+        //Retrieve values using the "get" method of FormData
         const data = {
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          subject: formData.get("subject"),
-          message: formData.get("message"),
+          name: formData.get("name"), // Get the value of the "name" input field
+          email: formData.get("email"), // Get the value of the "email" input field
+          phone: formData.get("phone"), // Get the value of the "phone" input field
+          subject: formData.get("subject"), // Get the value of the "subject" input field
+          message: formData.get("message"), // Get the value of the "message" textarea field
         };
 
         // Log the collected data for testing
@@ -253,19 +274,15 @@
 
         // Then we can submit the form to the server or send to an email address with a plug in
 
-        // Show a confirmation alert
-        // alert("Form submitted successfully!");
-        modal.classList.add("d-block"); // add the class to show the modal
-        modal.classList.remove("d-none"); //  add a class to show it
+        // Show a confirmation
+        // we can  turn on the modal alert, call the function we defined above
+        turnOnModal();
       });
-      // Function to close the modal
-      function shutOffModal() {
-        modal.classList.remove("d-block"); // Remove the class to hide the modal
-        modal.classList.add("d-none"); // add a class to hide it
-      }
 
+      // Get the "close" button element for the modal by its ID
       // Attach event listener to the close button
       const closeModalButton = document.getElementById("closeModalButton");
+      // When the button is clicked, the function "shutOffModal" will be executed
       closeModalButton.addEventListener("click", shutOffModal);
     </script>
   </body>

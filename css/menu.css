@@ -1,7 +1,7 @@
 main {
   /* height: calc(100vh - 12rem);
   overflow: auto; */
-  padding-top: 12rem;
+  padding-top: 10rem;
   background-color: #ebe3e0;
 }
 .carousel-cell {

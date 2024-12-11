@@ -359,11 +359,11 @@
     <!-- JS part -->
 
     <!-- import ionicons -->
+    <!-- I used this for the social media buttons in the footer-->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
     ></script>
-
     <script
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
@@ -371,27 +371,49 @@
 
     <!-- use fullscreen.js -->
     <script>
+      // Initializes the fullpage.js library on the element with ID 'fullpage'.
+
       new fullpage("#fullpage", {
-        //options
+        //options of the fullpage element
         navigation: true, // this can keep header in fixed position
-        autoScrolling: true,
-        scrollHorizontally: true,
+        autoScrolling: true, // Activates automatic scrolling between sections for smoother transitions.
+        scrollHorizontally: true, // Adds horizontal scrolling capability if there are slides within sections.
+        // I tried to keep every screen not exceeding the page height, but to keep safe
         sectionsColor: ["#EBE3E0", "#E3D8CA", "#EBE3E0", "E3D8CA"],
+        // Sets background colors for each section in order. I have 4 screens, so I put 4 colors here. It will be applied to each section in order
       });
     </script>
 
     <!-- use Leaflet for the map-->
     <script>
+      // Create a Leaflet map instance and set its initial view to specific coordinates with a zoom level of 24.
+      // I need the variable map to contain this map object becasue I need to operate it later
+      // L is the global namespace for the Leaflet library
+      // When I included Leaflet's JavaScript file in, the L object becomes available globally.
+      // L provides access to all Leaflet's features, such as creating maps, adding markers, setting tile layers,etc
+      // L.map is to creates a map instance and attaches it to an HTML element by ID "map"
+      // setView define the initial center and zoom level of the map
+      // I googled for a map position for Kerrisdale and got the number for coordinates
       var map = L.map("map").setView([49.2338, -123.1555], 24);
 
+      // Add a tile layer to the map
+      // The {z}, {x}, and {y} placeholders are replaced by the map's zoom level and coordinates.
+      // The `attribution` provides proper credit to OpenStreetMap contributors.
+      // Leaflet doesn’t enforce the attribution requirement. If we want, we can hide it, but I just let it be here
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
+      // Add a marker to the map at the coordinates [49.2338, -123.1555].
+      // This represents the location of "Juan's Kitchen."
       L.marker([49.2338, -123.1555])
+        //map is the Leaflet map instance we created
+        // Add the marker to the existing map instance.
         .addTo(map)
+        // Attach a popup to the marker with the message: "Juan's Kitchen<br> We are here waiting for you."
         .bindPopup("Juan's Kitchen<br> We are here waiting for you")
+        // Automatically open the popup when the marker is added to the map
         .openPopup();
     </script>
 
@@ -405,8 +427,11 @@
       });
     </script>
 
+    <!-- Include the AOS JavaScript library from a CDN -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+      // Initialize AOS to activate animations when elements come into view during scrolling
+      // mine animated picture is on the first screen, so we can see the animation when we refresh the browser
       AOS.init();
     </script>
   </body>
