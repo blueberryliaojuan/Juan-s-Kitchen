@@ -10,15 +10,12 @@
 *    \______/\\\\\
 *     _||_||_
 *
-*   Project Name: Juan's Kitchen
 *   By Juan Liao
-*   NO. A01370784
-*   Term Project Dec,2024
 *   Plugins: Bootstrap, Fullpage, Leaflet, Flickity, AOS
 *   GitHub: https://github.com/blueberryliaojuan/Juan-s-Kitchen
 *   I cooked and photographed all the dishes myself, so I did not cite the photos
 *   The icons are from ionicons
-*   Three avartars are from adobe stock with our student account
+*   Three avartars are from adobe stock with school account
 ****************************************
 ****************************************
 */ -->
@@ -318,7 +315,7 @@
     <!-- footer  -->
     <div id="footer">
       <footer
-        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+        class="d-flex flex-wrap justify-content-between align-items-center border-top"
       >
         <div class="col-md-4 d-flex align-items-center">
           <a
@@ -359,7 +356,6 @@
     <!-- JS part -->
 
     <!-- import ionicons -->
-    <!-- I used this for the social media buttons in the footer-->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -373,33 +369,21 @@
     <script>
       // Initializes the fullpage.js library on the element with ID 'fullpage'.
 
-      new fullpage("#fullpage", {
-        //options of the fullpage element
-        navigation: true, // this can keep header in fixed position
-        autoScrolling: true, // Activates automatic scrolling between sections for smoother transitions.
-        scrollHorizontally: true, // Adds horizontal scrolling capability if there are slides within sections.
-        // I tried to keep every screen not exceeding the page height, but to keep safe
-        sectionsColor: ["#EBE3E0", "#E3D8CA", "#EBE3E0", "E3D8CA"],
-        // Sets background colors for each section in order. I have 4 screens, so I put 4 colors here. It will be applied to each section in order
-      });
+      // new fullpage("#fullpage", {
+      //   //options of the fullpage element
+      //   navigation: true, // this can keep header in fixed position
+      //   autoScrolling: true, // Activates automatic scrolling between sections for smoother transitions.
+      //   scrollHorizontally: true, // Adds horizontal scrolling capability if there are slides within sections.
+      //   // I tried to keep every screen not exceeding the page height, but to keep safe
+      //   sectionsColor: ["#EBE3E0", "#E3D8CA", "#EBE3E0", "E3D8CA"],
+      //   // Sets background colors for each section in order. I have 4 screens, so I put 4 colors here. It will be applied to each section in order
+      // });
     </script>
 
     <!-- use Leaflet for the map-->
     <script>
-      // Create a Leaflet map instance and set its initial view to specific coordinates with a zoom level of 24.
-      // I need the variable map to contain this map object becasue I need to operate it later
-      // L is the global namespace for the Leaflet library
-      // When I included Leaflet's JavaScript file in, the L object becomes available globally.
-      // L provides access to all Leaflet's features, such as creating maps, adding markers, setting tile layers,etc
-      // L.map is to creates a map instance and attaches it to an HTML element by ID "map"
-      // setView define the initial center and zoom level of the map
-      // I googled for a map position for Kerrisdale and got the number for coordinates
       var map = L.map("map").setView([49.2338, -123.1555], 24);
 
-      // Add a tile layer to the map
-      // The {z}, {x}, and {y} placeholders are replaced by the map's zoom level and coordinates.
-      // The `attribution` provides proper credit to OpenStreetMap contributors.
-      // Leaflet doesn’t enforce the attribution requirement. If we want, we can hide it, but I just let it be here
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',

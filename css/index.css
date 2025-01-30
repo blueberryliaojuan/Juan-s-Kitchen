@@ -19,16 +19,66 @@ nav {
   position: fixed;
   background-color: #fff;
 }
+.navbar {
+  background-color: #fff; /* Set background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  z-index: 1000; /* Ensure it stays above other content */
+  border-bottom: 1px solid #ddd; /* Add a border to distinguish header */
+  height: 7rem;
+}
+
+.navbar .logo {
+  height: 2rem; /* Logo height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.navbar .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333; /* Text color */
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #007bff; /* Highlight color for active or hovered links */
+}
+
+.navbar-toggler {
+  border: none; /* Remove button border */
+  background-color: transparent; /* Transparent background */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom hamburger icon */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .navbar .nav-link {
+    padding: 0.5rem 1rem; /* Adjust spacing for mobile view */
+    text-align: center;
+  }
+
+  .navbar .collapse {
+    background-color: #fff; /* Ensure consistent background on collapse */
+    padding: 1rem; /* Add padding inside collapsed menu */
+  }
+}
+
 #footer {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
+  width: 100%;
   background: #fff;
   text-align: center;
   padding: 10px 0;
-  z-index: 1000; /* Higher than FullPage.js sections */
+  height: 7rem;
+}
+footer {
+  padding-top: 1rem;
 }
 
 .nav-link {

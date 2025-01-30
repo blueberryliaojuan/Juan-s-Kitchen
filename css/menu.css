@@ -1,9 +1,50 @@
-main {
-  /* height: calc(100vh - 12rem);
-  overflow: auto; */
-  padding-top: 10rem;
-  background-color: #ebe3e0;
+main.content {
+  margin-top: 7rem;
+  width: 80%;
+  height: 100%;
 }
+.main-container {
+  display: flex;
+}
+
+main {
+  background-color: #ebe3e0;
+  position: relative;
+}
+
+main > .container {
+  padding-bottom: 15rem;
+}
+
+.main-content {
+  height: calc(
+    /* 100dvh - 7rem */
+  ); /* Subtract the navbar height and footer height from the viewport height */
+  overflow-y: auto;
+  /* margin-top: 7rem; */
+}
+
+.tab-menu {
+  width: 20%;
+  margin-top: 7rem;
+  height: 100%;
+  box-sizing: border-box;
+  border-right: 1px solid #ddd;
+}
+
+.tab-menu .nav-link {
+  font-weight: 500;
+  color: #333;
+  padding: 0.5rem 1rem;
+}
+
+.tab-menu .nav-link:hover,
+.tab-menu .nav-link.active {
+  background-color: #956680;
+  color: #fff;
+  /* border-radius: 0.25rem;  */
+}
+
 .carousel-cell {
   width: 100%;
 }
@@ -13,44 +54,36 @@ main {
   height: auto;
 }
 
-/* enable Flickity by default. Ensures that Flickity waits until CSS has loaded to calculate the height of the cells */
-.carousel:after {
-  content: "flickity";
-  display: none; /* hide :after */
+.card {
+  position: relative;
+}
+.add-to-cart {
+  position: absolute;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: #956680 1px solid;
+  color: #956680;
+  right: 0.5rem;
+  top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.add-to-cart:hover {
+  background-color: #956680;
+  color: #fff;
 }
 
-.flickity-viewport {
-  height: 26rem !important;
+/* Hide content by default */
+.content .hide {
+  display: none;
 }
-@media screen and (min-width: 768px) and (max-width: 1366px) {
-  .flickity-viewport {
-    height: 28rem !important;
-  }
-}
-@media screen and (min-width: 576px) and (max-width: 767px) {
-  .flickity-viewport {
-    height: 38rem !important;
-  }
-}
-@media screen and (min-width: 500px) and (max-width: 575px) {
-  .flickity-viewport {
-    height: 90rem !important;
-  }
-}
-@media screen and (min-width: 400px) and (max-width: 499px) {
-  .flickity-viewport {
-    height: 80rem !important;
-  }
-}
-@media screen and (max-width: 400px) {
-  .flickity-viewport {
-    height: 70rem !important;
-  }
-}
-/* .flickity-slider {
-  padding: 30px;
-} */
 
-main > .container {
-  padding-bottom: 15rem;
+/* Show content when active */
+.content .show {
+  display: block;
 }

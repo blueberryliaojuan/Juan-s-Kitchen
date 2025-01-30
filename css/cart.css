@@ -1,0 +1,262 @@
+#cartPage {
+  width: 50%;
+  height: calc(100dvh - 7rem);
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #f9f9f9, #eaeaea);
+  background-size: cover;
+  padding: 2rem;
+  /* border-radius: 12px; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+/*  Add a fade-in animation for the cart */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.show {
+  display: block;
+}
+.shut {
+  display: none;
+}
+.top {
+  /* background: #fff; */
+  height: 4rem;
+  position: relative;
+}
+.cart-title {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+}
+.cart-shut {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+.close-outline {
+  width: 2rem;
+  height: 2rem;
+}
+
+.cart {
+  background: #fff;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cart .tr {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+#cartCategory {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.cart .tr:not(:first-of-type):not(:last-child) {
+  border-bottom: none; /* No border for intermediate rows */
+}
+
+.cart .tr:last-child {
+  border-bottom: 2px solid #000; /* Add border for total row */
+}
+
+.cart .tr div {
+  padding: 0 10px;
+  text-align: center;
+}
+
+.cart .tr > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart .tr div:nth-child(1) {
+  flex: 1; /* Checkbox */
+}
+
+.cart .tr div:nth-child(2) {
+  flex: 2; /* Image */
+}
+
+.cart .tr div:nth-child(2) img {
+  max-width: 60px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.cart .tr div:nth-child(3) {
+  flex: 4; /* Product name */
+  text-align: left;
+}
+
+.cart .tr div:nth-child(4),
+.cart .tr div:nth-child(5),
+.cart .tr div:nth-child(6) {
+  flex: 2; /* Price, Quantity, Total */
+}
+
+.cart .tr div:nth-child(5) input {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.cart .tr div:nth-child(6) .trash-outline {
+  color: #d9534f;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.quantity-change {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+/* Total Row Styling */
+.cart .tr-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+/* Align Icons Better */
+input[type="checkbox" i] {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: auto;
+}
+
+.trash-outline {
+  font-size: 1.8rem;
+  color: #d9534f;
+  cursor: pointer;
+}
+
+.close-outline {
+  font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.footer {
+  height: 5rem;
+  position: relative;
+}
+
+#totalAmount {
+  color: #956680;
+}
+
+.place-order {
+  width: 14rem;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: #ab957e;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 2rem;
+  /* bottom: -2rem; */
+  transform: translateX(-50%);
+}
+
+.quantity-change {
+  font-size: 2rem;
+}
+
+.cart-icon {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3;
+  background: #ffffff;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.num {
+  position: absolute;
+  top: -0.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.4rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+  background-color: #956680;
+  color: #fff;
+  z-index: 4;
+  border-radius: 50%;
+}
+
+.cart-outline {
+  font-size: 2rem;
+}
+.trash-outline {
+  font-size: 2rem;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  #cartPage {
+    width: 90%;
+    height: 80%;
+  }
+
+  .cart .tr div {
+    line-height: 3rem;
+  }
+
+  .place-order {
+    width: 12rem;
+    font-size: 1rem;
+  }
+}
+
+/* Transitions and Hover Effects */
+.cart-icon:hover,
+.cart-shut:hover,
+.place-order:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+input[type="checkbox"]:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
