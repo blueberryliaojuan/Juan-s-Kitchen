@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap for style -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS for flickity -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+
+    <!-- my own css -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/recommendation.css" />
+
+    <title>Juan's Kitchen</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <!-- Brand  Logo -->
+        <a
+          href="/"
+          class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <img class="logo" src="../img/logo.png" alt="" />
+        </a>
+
+        <!-- Hamburger Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="./menu.html" class="nav-link">Menus</a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="./recommendation.html"
+                class="nav-link active"
+                aria-current="page"
+                >Recommendations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="./about.html" class="nav-link">About us</a>
+            </li>
+            <li class="nav-item">
+              <a href="./find.html" class="nav-link">Find us</a>
+            </li>
+            <li class="nav-item">
+              <a href="./contact.html" class="nav-link">Contact us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <main>
+        <div class="section">
+          <div class="container">
+            <h2 class="text-center fw-bold text-body-emphasis mb-5">
+              STAR DISHES OF THE WEEK
+            </h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <div class="col">
+                <div class="card shadow-sm">
+                  <img
+                    src="../img/MainCourses07.jpg"
+                    alt="Fried Octopus with Vegetables"
+                  />
+                  <div class="card-body">
+                    <p class="card-text">Fried Octopus with Vegetables</p>
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group"></div>
+                      <small class="text-body-secondary">$25.00</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card shadow-sm">
+                  <img
+                    src="../img/MainCourses04.jpg"
+                    alt="Garlic Vermicelli Lobster"
+                  />
+                  <div class="card-body">
+                    <p class="card-text">Garlic Vermicelli Lobster</p>
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group"></div>
+                      <small class="text-body-secondary">$25.00</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card shadow-sm">
+                  <img
+                    src="../img/MainCourses08.jpg"
+                    alt="Fried Sea Cucumber with Vegetables"
+                  />
+                  <div class="card-body">
+                    <p class="card-text">Fried Sea Cucumber with Vegetables</p>
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <div class="btn-group"></div>
+                      <small class="text-body-secondary">$35.00</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="container">
+            <!-- Carousel -->
+            <div
+              id="textCarousel"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <h2 class="text-center fw-bold text-body-emphasis mb-5">
+                TRUST OUR CLIENTS
+              </h2>
+              <!-- Indicators/Dots -->
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#textCarousel"
+                  data-bs-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#textCarousel"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#textCarousel"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+              </div>
+
+              <!-- Carousel Items -->
+              <div class="carousel-inner">
+                <!-- First Slide -->
+                <div class="carousel-item active">
+                  <div
+                    class="carousel-content d-flex flex-column align-items-center justify-content-center"
+                  >
+                    <img src="../img/avartar01.jpg" alt="sophia photo" />
+                    <h3>Sophia W., Vancouver</h3>
+                    <p class="text-muted px-5 py-3">
+                      Juan’s Kitchen is my ultimate go-to for comfort food!
+                      Their app is so easy to use, and the delivery is always on
+                      time. The food is fresh, flavorful, and feels like it’s
+                      made just for me. It’s like having a personal chef in my
+                      pocket!
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Second Slide -->
+                <div class="carousel-item">
+                  <div
+                    class="carousel-content d-flex flex-column align-items-center justify-content-center"
+                  >
+                    <img src="../img/avartar02.jpg" alt="mark photo" />
+                    <h3>Mark H., Burnaby</h3>
+                    <p class="text-muted px-5 py-3">
+                      I visited Juan’s Kitchen with my family, and it was
+                      unforgettable! The ambiance was warm, the service
+                      impeccable, and the food—simply outstanding. The table
+                      reservation feature on the app made everything
+                      stress-free. Can’t wait to come back!
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Third Slide -->
+                <div class="carousel-item">
+                  <div
+                    class="carousel-content d-flex flex-column align-items-center justify-content-center"
+                  >
+                    <img src="../img/avartar03.jpg" alt="emma photo" />
+                    <h3>Emma R., Richmond</h3>
+                    <p class="text-muted px-5 py-3">
+                      Juan’s Kitchen’s loyalty program is amazing! I’ve earned
+                      so many rewards just by ordering my favorite dishes. It
+                      feels great to be appreciated as a customer. Plus, the
+                      variety on the menu always keeps me coming back for more!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- footer  -->
+      <div id="footer">
+        <footer class="border-top py-3">
+          <div class="container">
+            <div class="row">
+              <!-- Row 1: Branding -->
+              <div class="col-12 align-items-center">
+                <a
+                  href="/"
+                  class="me-2 text-body-secondary text-decoration-none lh-1"
+                >
+                  <svg class="bi" width="30" height="24">
+                    <use xlink:href="#bootstrap" />
+                  </svg>
+                </a>
+                <span class="text-body-secondary">
+                  &copy; 2024 Juan's Kitchen, Inc
+                </span>
+              </div>
+
+              <!-- Row 2: Social Links -->
+              <div class="col-12 d-flex align-items-center">
+                <ul class="nav list-unstyled d-flex">
+                  <li class="me-3">
+                    <a class="text-body-secondary" href="#">
+                      <ion-icon name="logo-facebook" class="h4"></ion-icon>
+                    </a>
+                  </li>
+                  <li class="me-3">
+                    <a class="text-body-secondary" href="#">
+                      <ion-icon name="logo-pinterest" class="h4"></ion-icon>
+                    </a>
+                  </li>
+                  <li class="me-3">
+                    <a class="text-body-secondary" href="#">
+                      <ion-icon name="logo-instagram" class="h4"></ion-icon>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ****************************************** -->
+    <!-- ****************************************** -->
+    <!-- JS part -->
+  </body>
+</html>

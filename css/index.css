@@ -41,7 +41,7 @@ nav {
 
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
-  color: #007bff; /* Highlight color for active or hovered links */
+  color: #956680; /* Highlight color for active or hovered links */
 }
 
 .navbar-toggler {

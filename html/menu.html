@@ -68,13 +68,21 @@
               <a href="#" class="nav-link active">Menus</a>
             </li>
             <li class="nav-item">
-              <a href="../index.html" class="nav-link" aria-current="page"
+              <a
+                href="./recommendation.html"
+                class="nav-link"
+                aria-current="page"
                 >Recommandations</a
               >
             </li>
-
             <li class="nav-item">
-              <a href="./contact.html" class="nav-link">Contact</a>
+              <a href="./contact.html" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="./contact.html" class="nav-link">Find Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="./contact.html" class="nav-link">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -85,31 +93,36 @@
       <div class="main-container">
         <div class="tab-menu">
           <nav class="nav flex-column">
-            <a class="nav-link active" href="#appetizers" data-id="appetizers"
+            <a
+              class="nav-link m-2 active"
+              href="#appetizers"
+              data-id="appetizers"
               >Appetizers</a
             >
-            <a
-              class="nav-link"
-              href="#main-courses"
-              data-id="mainCourses-carouse"
+            <a class="nav-link m-2" href="#main-courses" data-id="mainCourses"
               >Main Courses</a
             >
-            <a class="nav-link" href="#vegetarian-specials" data-id="vegetarian"
+            <a
+              class="nav-link m-2"
+              href="#vegetarian-specials"
+              data-id="vegetarian"
               >Vegetarian Specials</a
             >
-            <a class="nav-link" href="#staple-food" data-id="staple"
+            <a class="nav-link m-2" href="#staple-food" data-id="staple"
               >Staple Food</a
             >
-            <a class="nav-link" href="#desserts" data-id="desserts">Desserts</a>
-            <a class="nav-link" href="#beverages" data-id="beverages"
+            <a class="nav-link m-2" href="#desserts" data-id="desserts"
+              >Desserts</a
+            >
+            <a class="nav-link m-2" href="#beverages" data-id="beverages"
               >Beverages</a
             >
           </nav>
         </div>
 
         <main class="content">
-          <div id="appetizers" class="container px-4">
-            <div class="carousel-cell py-2">
+          <div id="appetizers" class="container tab-page px-4">
+            <!-- <div class="carousel-cell py-2">
               <div
                 class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3"
               >
@@ -197,14 +210,14 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
-          <div id="mainCourses" class="container px-4"></div>
-          <div id="vegetarian" class="container px-4"></div>
-          <div id="staple" class="container px-4"></div>
-          <div id="desserts" class="container px-4"></div>
-          <div id="beverages" class="container px-4"></div>
+          <div id="mainCourses" class="container tab-page px-4"></div>
+          <div id="vegetarian" class="container tab-page px-4"></div>
+          <div id="staple" class="container tab-page px-4"></div>
+          <div id="desserts" class="container tab-page px-4"></div>
+          <div id="beverages" class="container tab-page px-4"></div>
           <!-- </div> -->
           <div id="cartPage" class="shut">
             <div class="top">
@@ -268,7 +281,7 @@
               <div class="tr tr-total">
                 <div>&nbsp</div>
                 <div>&nbsp</div>
-                <div>Tax</div>
+                <div>Tax (5%)</div>
                 <div id="taxAmount"></div>
                 <div>&nbsp</div>
                 <div>&nbsp</div>
@@ -363,7 +376,7 @@
     <script>
       const generateCardContent = (arr) => {
         let htmlContent = `
-        <div class="carousel-cell py-2" >
+        <div class="carousel-cell py-4" >
          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
         `;
         for (let i = 0; i < arr.length; i += 1) {
@@ -777,29 +790,39 @@
 
       // Tab menu functionality
       const tabMenu = document.querySelector(".tab-menu");
-      const content = document.querySelector(".content");
+      const tabPages = document.querySelectorAll(".tab-page");
+      const tabLinks = tabMenu.querySelectorAll(".tab-menu a");
+      // console.log("tabLinks", tabLinks);
 
-      if (tabMenu && content) {
+      //only show the Appetizers (first tab) at the begining
+      Array.from(tabPages).forEach((child) => {
+        child.classList.remove("show");
+        child.classList.add("hide");
+      });
+      tabPages[0].classList.remove("hide");
+      tabPages[0].classList.add("show");
+
+      if (tabMenu && tabPages) {
         tabMenu.addEventListener("click", function (e) {
           // Ensure the clicked element has a dataset with an ID
           const clickedTab = e.target;
           const { id } = clickedTab.dataset;
+          // console.log("id", id);
 
           // If there's no valid ID in the clicked tab, return early
           if (!id) return;
 
-          console.log("Clicked tab:", clickedTab);
+          // console.log("Clicked tab:", clickedTab);
 
-          // Remove 'active' class from all tabs
-          Array.from(tabMenu.children).forEach((tab) => {
-            tab.classList.remove("active");
+          Array.from(tabLinks).forEach((link) => {
+            link.classList.remove("active");
           });
 
           // Add 'active' class to the clicked tab
           clickedTab.classList.add("active");
 
           // Loop through all content children and hide them
-          Array.from(content.children).forEach((child) => {
+          Array.from(tabPages).forEach((child) => {
             child.classList.remove("show");
             child.classList.add("hide");
           });

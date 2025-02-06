@@ -29,7 +29,7 @@ class Cart {
     var str = "";
     for (var i = 0; i < this.goods.length; i++) {
       str += `
-          <div class="tr" id="${this.goods[i].id}">
+          <div class="tr hide" id="${this.goods[i].id}">
               <div>
                 <input type="checkbox" name="ckboxs" value="${
                   this.goods[i].id
@@ -160,6 +160,7 @@ class Cart {
     this.cartShutter.addEventListener("click", function (e) {
       console.log("e", e);
       console.log("this.cartPage", _this.cartPage);
+      _this.cartPage?.classList.remove("show");
       _this.cartPage?.classList.add("shut");
     });
 

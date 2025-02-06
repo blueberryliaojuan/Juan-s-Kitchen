@@ -12,6 +12,7 @@
   /* border-radius: 12px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.3s ease;
+  z-index: 1;
 }
 /*  Add a fade-in animation for the cart */
 @keyframes fadeIn {
@@ -45,8 +46,8 @@
 }
 .cart-shut {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
   cursor: pointer;
 }
 .close-outline {
@@ -82,14 +83,14 @@
 }
 
 .cart .tr div {
-  padding: 0 10px;
+  /* padding: 0 10px; */
   text-align: center;
 }
 
 .cart .tr > div {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .cart .tr div:nth-child(1) {
@@ -111,9 +112,16 @@
   text-align: left;
 }
 
-.cart .tr div:nth-child(4),
+.cart .tr div:nth-child(4) {
+  flex: 2; /* Price,*/
+  text-align: right;
+  padding-right: 2rem;
+}
 .cart .tr div:nth-child(5),
 .cart .tr div:nth-child(6) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 2; /* Price, Quantity, Total */
 }
 
@@ -200,23 +208,28 @@ input[type="checkbox" i] {
   right: 1rem;
   bottom: 1rem;
   z-index: 3;
-  background: #ffffff;
   width: 4rem;
   height: 4rem;
+  background-color: #ab957e;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
 }
+
+#cartIcon > ion-icon.cart-outline {
+  color: #ffffff !important;
+}
+
 .num {
   position: absolute;
-  top: -0.1rem;
+  top: -0.2rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 1.4rem;
-  height: 1.4rem;
-  line-height: 1.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
   text-align: center;
   background-color: #956680;
   color: #fff;
@@ -252,11 +265,22 @@ input[type="checkbox" i] {
 .cart-icon:hover,
 .cart-shut:hover,
 .place-order:hover {
-  background-color: #f0f0f0;
+  background-color: #dcbdae;
   transition: background-color 0.3s ease;
 }
 
 input[type="checkbox"]:hover {
   transform: scale(1.2);
   transition: transform 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 1280px) {
+  #cartPage {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 780px) {
+  #cartPage {
+    width: 100%;
+  }
 }
