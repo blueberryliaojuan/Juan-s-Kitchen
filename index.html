@@ -79,6 +79,20 @@
           <a class="nav-link" href="#desserts" data-id="desserts">Desserts</a>
           <a class="nav-link" href="#drinks" data-id="drinks">Drinks</a>
         </nav>
+
+        <div class="suggestion">
+          <div class="table-info">Your Table No: A07</div>
+          <div id="suggestion-icon">
+            <ion-icon name="create-outline" size="large"></ion-icon>
+          </div>
+
+          <h4>Have Suggestions?</h4>
+          <p>
+            Share your feedback and get <span class="p-1">5% off</span> your
+            next meal.
+          </p>
+          <button id="suggestionBtn" class="btn btn-checkout">Send Now</button>
+        </div>
       </div>
 
       <!-- Main content area -->
@@ -141,7 +155,7 @@
           <div
             class="d-flex justify-content-center align-items-center border-bottom py-3 position-relative"
           >
-            <h5 class="mb-0 text-primary fw-bold">Order Details</h5>
+            <h5 class="mt-5 mb-5 text-primary fw-bold">Order Details</h5>
             <button
               type="button"
               id="cartShutter"
@@ -229,6 +243,23 @@
               <div class="col-7 text-end">Tax (5%):</div>
               <div class="col-5 text-end" id="taxAmount">$0.00</div>
             </div>
+            <div class="row fw-bold text-primary mb-2">
+              <div class="col-7 text-end">Coupon Code:</div>
+
+              <div class="col-3 text-start" id="taxAmount">
+                <div class="coupon-section">
+                  <input type="text" name="coupon" class="coupon-input" />
+                  <button
+                    type="button"
+                    id="couponIcon"
+                    class="btn btn-outline-dark btn-sm"
+                  >
+                    Apply
+                  </button>
+                </div>
+              </div>
+              <div class="col-2 text-end" id="couponDiscountAmount">$0.00</div>
+            </div>
             <div class="row fw-bold text-primary mb-3">
               <div class="col-7 text-end">Total:</div>
               <div class="col-5 text-end" id="totalAmount">$0.00</div>
@@ -262,6 +293,111 @@
             0
           </div>
         </div>
+
+        <!-- suggestion面板 -->
+        <div
+          id="suggestionPage"
+          class="suggestion-panel bg-light border rounded shadow position-fixed end-0 bottom-0 d-none"
+        >
+          <div class="position-relative suggestion-shutter-case">
+            <button
+              type="button"
+              id="suggestionShutter"
+              class="custom-btn suggestion-close-btn position-absolute top-50 end-0 translate-middle-y me-3"
+              aria-label="Close"
+            >
+              <ion-icon name="close-outline" size="large"></ion-icon>
+            </button>
+          </div>
+
+          <div class="suggestion-content">
+            <h3 class="text-center fw-bold">
+              We’d love to hear your feedback! <span>🥰</span>
+            </h3>
+            <p class="text-center mb-5 text-muted">
+              Let us know how your visit went — it only takes a few seconds and
+              helps us make your next experience even better.
+            </p>
+            <div class="feedback-case">
+              <h5 class="mb-3 text-center fw-semibold">
+                How was your experience?
+              </h5>
+              <div
+                class="d-flex justify-content-center gap-4 mb-4"
+                role="group"
+                aria-label="Experience rating"
+              >
+                <button
+                  type="button"
+                  class="emoji-btn"
+                  data-value="terrible"
+                  aria-label="Terrible"
+                >
+                  😔<br /><small>Terrible</small>
+                </button>
+                <button
+                  type="button"
+                  class="emoji-btn"
+                  data-value="unhappy"
+                  aria-label="Unhappy"
+                >
+                  😕<br /><small>Unhappy</small>
+                </button>
+                <button
+                  type="button"
+                  class="emoji-btn"
+                  data-value="natural"
+                  aria-label="Natural"
+                >
+                  😐<br /><small>Natural</small>
+                </button>
+                <button
+                  type="button"
+                  class="emoji-btn"
+                  data-value="happy"
+                  aria-label="Happy"
+                >
+                  😊<br /><small>Happy</small>
+                </button>
+                <button
+                  type="button"
+                  class="emoji-btn"
+                  data-value="loved"
+                  aria-label="Loved it!"
+                >
+                  😍<br /><small>Loved it!</small>
+                </button>
+              </div>
+
+              <h5 class="mb-3 fw-semibold">Anything we could improve?</h5>
+              <textarea
+                class="form-control mb-4"
+                id="suggestionComment"
+                placeholder="Add a comment..."
+                rows="6"
+              ></textarea>
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  id="submitSuggestion"
+                  class="btn btn-checkout"
+                >
+                  Submit now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="feedbackModal" class="modal-overlay" style="display: none">
+          <div class="modal-content">
+            <p>Thank you for your feedback! Here is your 5% discount code:</p>
+            <p><strong class="text-black 5em">HE88T7</strong></p>
+            <p>You can use it on your next visit within the next 30 days.</p>
+            <button id="closeModalBtn" class="btn btn-checkout">Close</button>
+          </div>
+        </div>
       </main>
     </div>
 
@@ -283,5 +419,8 @@
 
     <!-- Shopping cart module -->
     <script type="module" src="./js/cart.js"></script>
+
+    <!-- suggestion -->
+    <script type="module" src="./js/suggestion.js"></script>
   </body>
 </html>
