@@ -23,7 +23,7 @@ import {
  */
 const generateCardContent = (arr) => `
 <div class="card-case py-2 py-sm-3 py-md-4 py-lg-5">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
     ${arr
       .map(
         (item) => `
@@ -37,12 +37,14 @@ const generateCardContent = (arr) => `
           item.title || "Dish"
         }" class="card-img-top rounded-top-4" />
           <div class="card-body pb-4">
+           <div class="card-intro">
             <h5 class="card-title fw-bold mb-2">${
               item.title || "Delicious Dish"
             }</h5>
-            <p class="card-text text-muted small mb-3">
+            <p class="card-text text-muted small mb-2">
               ${item.intro}
             </p>
+            </div>
             <div class="d-flex justify-content-between align-items-center">
               <div class="text-primary fw-semibold fs-5">${item.price}</div>
             </div>
@@ -57,11 +59,10 @@ const generateCardContent = (arr) => `
       .join("")}
   </div>
 </div>
-
 `;
 
 /**
- * Object mapping section IDs to their respective data arrays.
+ * Map section IDs to their corresponding data arrays.
  */
 const sections = {
   starters: startersArr,
@@ -89,7 +90,7 @@ const tabPages = document.querySelectorAll(".tab-page");
 const tabLinks = tabMenu.querySelectorAll("a");
 
 /**
- * Initialize tabs: show first tab content, hide others.
+ * Initialize tabs: show the first tab content and hide others.
  */
 tabPages.forEach((page, index) => {
   page.classList.toggle("show", index === 0);
@@ -97,18 +98,19 @@ tabPages.forEach((page, index) => {
 });
 
 /**
- * Event listener for tab clicks to switch content and active tab.
+ * Event listener for tab clicks:
+ * Switch active tab and show corresponding content.
  */
 tabMenu.addEventListener("click", (e) => {
-  // Find the closest anchor element in case child elements inside link are clicked
+  // Get the closest anchor element if a child element was clicked
   const clicked = e.target.closest("a");
   if (!clicked) return;
 
-  // Remove 'active' class from all tab links and add to the clicked one
+  // Remove 'active' class from all tabs and add to the clicked tab
   tabLinks.forEach((link) => link.classList.remove("active"));
   clicked.classList.add("active");
 
-  // Show the associated tab content, hide others
+  // Show the related tab content and hide others
   tabPages.forEach((page) => {
     const targetId = clicked.getAttribute("href");
     const isTarget = `#${page.id}` === targetId;
@@ -117,13 +119,14 @@ tabMenu.addEventListener("click", (e) => {
   });
 });
 
-// ===== 新增：滚动高亮 =====
+// Scroll highlight =====
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // 找到当前 section 对应的菜单
+        // Remove active state from all tabs
         tabLinks.forEach((link) => link.classList.remove("active"));
+        // Add active state to the tab matching the current visible section
         const id = entry.target.getAttribute("id");
         document
           .querySelector(`.tab-menu a[href="#${id}"]`)
@@ -131,8 +134,8 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.5 } // 元素 50% 进入视口时触发
+  { threshold: 0.5 } // Trigger when 50% of element is visible in viewport
 );
 
-// 监听所有内容区
+// Observe all tab content sections
 tabPages.forEach((page) => observer.observe(page));

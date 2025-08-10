@@ -53,7 +53,9 @@ class Cart {
                 </button>
                 <input type="text" class="form-control form-control-sm text-center" value="${
                   this.goods[i].num
-                }" readonly style="width: 40px" />
+                }" readonly style="width: 40px; color: ${
+        this.goods[i].num != 1 ? "#dc3545" : "inherit"
+      };" />
                 <button type="button" class="custom-btn quantity-increase" aria-label="Increase quantity">
                   <ion-icon name="add-circle-outline"></ion-icon>
                 </button>
@@ -71,6 +73,8 @@ class Cart {
     this.calculateTotal();
     // 保存数据到本地
     localStorage.setItem("goods", JSON.stringify(this.goods));
+    //change checkbox status
+    this.editSelectAll();
   }
 
   //3 targeting doms
@@ -84,6 +88,8 @@ class Cart {
   cartNum = document.getElementById("cartNum");
   cartShutter = document.getElementById("cartShutter");
   cartIcon = document.getElementById("cartIcon");
+  couponApply = document.getElementById("couponIcon");
+  discountNode = document.getElementById("couponDiscountAmount");
 
   //所有监听事件的函数
   addevent() {
@@ -149,6 +155,10 @@ class Cart {
       _this.cartPage?.classList.remove("shut");
       _this.cartPage?.classList.add("show");
     });
+
+    this.couponApply.addEventListener("click", function () {
+      _this.applyCoupon();
+    });
   }
 
   // 新增或更新商品数据
@@ -188,33 +198,91 @@ class Cart {
 
   // 更新全选按钮状态
   editSelectAll() {
-    const allChecked =
-      this.goods.length > 0 && this.goods.every((item) => item.checked);
-    this.selectAllNode.checked = allChecked;
+    const total = this.goods.length;
+    const checkedCount = this.goods.filter((item) => item.checked).length;
+
+    if (total > 0 && checkedCount === total) {
+      // 全选
+      this.selectAllNode.checked = true;
+      this.selectAllNode.indeterminate = false;
+    } else if (checkedCount > 0) {
+      // 半选
+      this.selectAllNode.checked = false;
+      this.selectAllNode.indeterminate = true;
+    } else {
+      // 全不选
+      this.selectAllNode.checked = false;
+      this.selectAllNode.indeterminate = false;
+    }
   }
 
   // 计算总价、税费、数量
   calculateTotal() {
     let count = 0;
-    let amount = 0;
+    let originalAmount = 0; // 折扣前金额
+    let discountAmount = 0;
+    let discountedAmount = 0;
     let taxAmount = 0;
     let totalAmount = 0;
 
     this.goods.forEach((item) => {
       if (item.checked) {
         count += item.num;
-        amount += item.num * parseFloat(item.price.slice(1));
+        originalAmount += item.num * parseFloat(item.price.slice(1));
       }
     });
 
-    taxAmount = amount * 0.05; // 5%税率示例
-    totalAmount = amount + taxAmount;
+    if (this.appliedCoupon) {
+      const discountValue = parseFloat(this.appliedCoupon.discount) / 100;
+      discountAmount = originalAmount * discountValue;
+    }
+
+    discountedAmount = originalAmount - discountAmount;
+    taxAmount = discountedAmount * 0.05;
+    totalAmount = discountedAmount + taxAmount;
 
     // 更新显示
     this.cartNum.textContent = count;
-    this.amountNode.textContent = `$${amount.toFixed(2)}`;
+
+    // 这里amountNode显示原价（折扣前）
+    this.amountNode.textContent = `$${originalAmount.toFixed(2)}`;
+
+    // 优惠金额
+    this.discountNode.textContent = `-$${discountAmount.toFixed(2)}`;
+
+    // 税额
     this.taxAmount.textContent = `$${taxAmount.toFixed(2)}`;
+
+    // 最终总价（折扣+税）
     this.totalAmount.textContent = `$${totalAmount.toFixed(2)}`;
+  }
+
+  //coupon
+  couponCodeArr = [
+    { code: "HE88T7", discount: 5 },
+    { code: "Happy88", discount: 12 },
+    { code: "WELCOME95", discount: 5 },
+  ];
+  appliedCoupon = null;
+  applyCoupon() {
+    const couponInput = document.querySelector(".coupon-input");
+    const code = couponInput.value.trim();
+
+    const foundCoupon = this.couponCodeArr.find((c) => c.code === code);
+
+    if (foundCoupon) {
+      this.appliedCoupon = foundCoupon;
+      this.discountNode.style.color = "green";
+      this.discountNode.textContent = `-${foundCoupon.discount}%`;
+      // couponInput.value = "";
+      // alert("Coupon applied!");
+    } else {
+      this.appliedCoupon = null;
+      this.discountNode.style.color = "red";
+      this.discountNode.textContent = "Invalid";
+    }
+
+    this.calculateTotal();
   }
 }
 
