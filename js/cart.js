@@ -1,5 +1,6 @@
 class Cart {
   goods = [
+    // 示例数据格式：
     // {
     //   id: "main001",
     //   title: "Eel Fillet",
@@ -29,38 +30,40 @@ class Cart {
     var str = "";
     for (var i = 0; i < this.goods.length; i++) {
       str += `
-          <div class="tr hide" id="${this.goods[i].id}">
-              <div>
+          <div class="row align-items-center py-2 border-bottom" id="${
+            this.goods[i].id
+          }">
+              <div class="col-1 text-center">
                 <input type="checkbox" name="ckboxs" value="${
                   this.goods[i].id
-                }" ${this.goods[i].checked ? "checked" : ""}/>
+                }" ${this.goods[i].checked ? "checked" : ""} />
               </div>
-              <div>
-                <img
-                  src="${this.goods[i].url}"
-                  alt=""
-                  class="cart-item-img"
-                />
+              <div class="col-2 text-center">
+                <img src="${this.goods[i].url}" alt="${
+        this.goods[i].title
+      }" class="img-fluid rounded cart-item-img" />
               </div>
-              <div>${this.goods[i].title}</div>
-              <div>${this.goods[i].price}</div>
-              <div>
-                <ion-icon
-                    name="remove-circle-outline"
-                    class="quantity-change"
-                  ></ion-icon
-                >
-               <input type="text" value=${this.goods[i].num} readonly="" />
-            <ion-icon
-                    name="add-circle-outline"
-                    class="quantity-change"
-                  ></ion-icon
-                >
+              <div class="col-4 text-truncate" title="${this.goods[i].title}">${
+        this.goods[i].title
+      }</div>
+              <div class="col-2 text-end">${this.goods[i].price}</div>
+              <div class="col-2 d-flex justify-content-center align-items-center gap-2">
+                <button type="button" class="custom-btn quantity-decrease" aria-label="Decrease quantity">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                </button>
+                <input type="text" class="form-control form-control-sm text-center" value="${
+                  this.goods[i].num
+                }" readonly style="width: 40px" />
+                <button type="button" class="custom-btn quantity-increase" aria-label="Increase quantity">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </button>
               </div>
-              <div>
-              <ion-icon name="trash-outline" class="trash-outline"></ion-icon>
+              <div class="col-1 text-center">
+                <button type="button" class="custom-btn text-danger delete-item p-0" aria-label="Delete item">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </button>
               </div>
-            </div>
+          </div>
       `;
     }
     this.goodsNode.innerHTML = str;
@@ -72,13 +75,9 @@ class Cart {
 
   //3 targeting doms
   cartPage = document.querySelector("#cartPage");
-  addcartNode = document.getElementById("addcart");
   addToCartNodes = document.querySelectorAll(".add-to-cart");
-  titleNode = document.getElementById("title");
-  priceNode = document.getElementById("price");
   delallNode = document.getElementById("delall");
   selectAllNode = document.getElementById("selectAll");
-  countNode = document.getElementById("count");
   amountNode = document.getElementById("amount");
   taxAmount = document.getElementById("taxAmount");
   totalAmount = document.getElementById("totalAmount");
@@ -88,149 +87,113 @@ class Cart {
 
   //所有监听事件的函数
   addevent() {
-    // 3.3 保存当前实例的this
     var _this = this;
-    // 3.2 addcart添加购物车按钮的点击事件
+
+    // 添加商品按钮事件
     this.addToCartNodes.forEach((item) => {
       item.addEventListener("click", function () {
-        //3.5获取用户输入的商品名以及价格，传递给保存数据函数
         _this.saveData(item.parentNode.dataset);
       });
     });
 
-    // 4、监听复选框状态，采用事件委托，监听goodsNode
+    // 购物车内事件委托
     this.goodsNode.addEventListener("click", function (e) {
-      // console.log(" e", e.target.name);
-      //4.1 e.target.name 获取目标对象身上的name属性，用来标识点击对象的不同，从而有不同的处理逻辑
-      if (e.target.name == "ckboxs") {
-        // 4.2 获取点击按钮的id，以及状态，传递给修改函数，进行数据的修改
-        var id = e.target.parentNode.parentNode.id;
-        var checked = e.target.checked;
-        // console.log(id, checked);
+      if (e.target.name === "ckboxs") {
+        const id = e.target.closest("[id]").id;
+        const checked = e.target.checked;
         _this.editData(id, "checked", checked);
       }
 
-      //5. handleQuantityChange
       if (
-        ["remove-circle-outline", "add-circle-outline"].includes(e.target.name)
+        e.target.name === "remove-circle-outline" ||
+        e.target.name === "add-circle-outline"
       ) {
-        // console.log("Quantity modification triggered");
-        // Retrieve the ID of the item to modify
         const id = e.target.closest("[id]").id;
-        // console.log("id", id);
-        // Find the item in the goods array
         const item = _this.goods.find((item) => item.id === id);
         if (item) {
-          // Adjust the quantity based on the button clicked, ensuring it remains zero or above
           item.num = Math.max(
             0,
             item.num + (e.target.name === "add-circle-outline" ? 1 : -1)
           );
-          // Update the data using the editData function
           _this.editData(id, "num", item.num);
         }
       }
 
-      //delete the item from the list
-      if (e.target.name == "trash-outline") {
-        //6.2 获取点击删除按钮的id
-        var id = e.target.parentNode.closest("[id]").id;
-        //6.3 将准备好的id传递给删除函数
+      if (e.target.name === "trash-outline") {
+        const id = e.target.closest("[id]").id;
         _this.delData(id);
       }
     });
 
-    // 7、全选按钮
+    // 全选按钮
     this.selectAllNode.addEventListener("click", function (e) {
-      //7.2 获取全选按钮的状态，全选按钮的状态跟每个商品的状态一直
-      var isAllChecked = e.target.checked;
-      //7.3 传递全选状态给处理函数
+      const isAllChecked = e.target.checked;
       _this.selectAll(isAllChecked);
-      // 8.1、监听复选框状态，如果全部为true，则全选按钮为true
       _this.editSelectAll();
     });
 
-    // 9、清空购物车
+    // 清空购物车
     this.delallNode.addEventListener("click", function () {
       _this.goods = [];
       _this.render();
     });
 
-    //cartShutter
-    this.cartShutter.addEventListener("click", function (e) {
-      console.log("e", e);
-      console.log("this.cartPage", _this.cartPage);
+    // 关闭购物车面板
+    this.cartShutter.addEventListener("click", function () {
       _this.cartPage?.classList.remove("show");
       _this.cartPage?.classList.add("shut");
     });
 
-    //open the cart
-    this.cartIcon.addEventListener("click", function (e) {
-      console.log("e", e);
+    // 打开购物车面板
+    this.cartIcon.addEventListener("click", function () {
       _this.cartPage?.classList.remove("shut");
       _this.cartPage?.classList.add("show");
     });
   }
 
-  //3.6 saveData
+  // 新增或更新商品数据
   saveData(data) {
-    // Find the item in the goods array with the matching ID
     const itemIndex = this.goods.findIndex((item) => item.id === data.id);
     if (itemIndex !== -1) {
-      // If found, increment the `num` property
       this.goods[itemIndex].num++;
     } else {
-      // If not found, add the new item to the beginning of the goods array
       this.goods.unshift({ ...data, num: 1, checked: true });
     }
-    // console.log("Updated goods:", this.goods);
-    // Call the render function to refresh the UI
-    this.render();
-  }
-  //  4.3 、修改数据函数,修改哪个id，哪个属性，哪个值
-  editData(id, key, value) {
-    // 4.4遍历数据，筛选出，要修改哪条数据，然后把对应属性以及属性值修改了
-    for (let index = 0; index < this.goods.length; index++) {
-      if (this.goods[index].id == id) {
-        this.goods[index][key] = value;
-      }
-    }
-    // 4.4 修改后，需要重新渲染
     this.render();
   }
 
-  //6、删除数据函数  id，删除哪个数据
+  // 修改商品属性
+  editData(id, key, value) {
+    for (let i = 0; i < this.goods.length; i++) {
+      if (this.goods[i].id === id) {
+        this.goods[i][key] = value;
+      }
+    }
+    this.render();
+  }
+
+  // 删除商品
   delData(id) {
-    this.goods = this.goods.filter(function (item) {
-      return item.id != id;
+    this.goods = this.goods.filter((item) => item.id !== id);
+    this.render();
+  }
+
+  // 全选或反选
+  selectAll(isAllChecked) {
+    this.goods.forEach((item) => {
+      item.checked = isAllChecked;
     });
     this.render();
   }
 
-  //7.4、全选与反全选
-  selectAll(isAllChecked) {
-    for (let index = 0; index < this.goods.length; index++) {
-      this.goods[index].checked = isAllChecked;
-    }
-    this.render();
-  }
-
-  // 8.2、处理单选与全选交互
+  // 更新全选按钮状态
   editSelectAll() {
-    var goodCheck = 0;
-    for (let index = 0; index < this.goods.length; index++) {
-      if (this.goods[index].checked) {
-        goodCheck += 1;
-      }
-    }
-    if (this.goods.length == goodCheck) {
-      this.selectAllNode.checked = true;
-    } else {
-      this.selectAllNode.checked = false;
-    }
+    const allChecked =
+      this.goods.length > 0 && this.goods.every((item) => item.checked);
+    this.selectAllNode.checked = allChecked;
   }
 
-  //10、calculate the total price and dish amount
+  // 计算总价、税费、数量
   calculateTotal() {
     let count = 0;
     let amount = 0;
@@ -244,11 +207,10 @@ class Cart {
       }
     });
 
-    taxAmount = amount * 0.05; // Example tax rate of 5%
+    taxAmount = amount * 0.05; // 5%税率示例
     totalAmount = amount + taxAmount;
 
-    // Update DOM elements
-    this.countNode.textContent = count;
+    // 更新显示
     this.cartNum.textContent = count;
     this.amountNode.textContent = `$${amount.toFixed(2)}`;
     this.taxAmount.textContent = `$${taxAmount.toFixed(2)}`;
@@ -256,5 +218,5 @@ class Cart {
   }
 }
 
-var mycart = new Cart();
+const mycart = new Cart();
 mycart.render();

@@ -1,91 +1,107 @@
+/* Container for main content: uses flexbox layout */
 .main-container {
   display: flex;
 }
 
+/* Main content area styling */
 main {
-  background-color: #ebe3e0;
-  position: relative;
+  background-color: #ebe3e0; /* Light background color */
+  position: relative; /* For positioning child elements absolutely */
 }
 
+/* Padding at bottom of container inside main to avoid overlap with fixed footer */
 main > .container {
   padding-bottom: 15rem;
 }
 
+/* Main content wrapper, height fills viewport minus navbar/footer, vertical scroll enabled */
 .main-content {
   height: calc(
     /* 100dvh - 7rem */
-  ); /* Subtract the navbar height and footer height from the viewport height */
-  overflow-y: auto;
-  /* margin-top: 7rem; */
+  ); /* Subtract navbar and footer height from viewport height */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+  /* margin-top: 7rem; */ /* Commented out: space for fixed navbar */
 }
 
+/* Sidebar menu on left, fixed width and full height, with right border */
 .tab-menu {
   width: 20%;
-  margin-top: 8rem;
+  margin-top: 8rem; /* Push down to avoid navbar */
   height: 100%;
-  box-sizing: border-box;
-  border-right: 1px solid #ddd;
-}
-main.content {
-  margin-top: 7rem;
-  width: 80%;
-  height: 100%;
+  box-sizing: border-box; /* Include border and padding in width */
+  border-right: 1px solid #ddd; /* Light gray vertical separator */
 }
 
+/* Main content area next to sidebar */
+main.content {
+  margin-top: 7rem; /* Space for navbar */
+  width: 80%; /* Takes remaining width */
+  height: 100%; /* Full height */
+}
+
+/* Style for each navigation link in sidebar */
 .tab-menu .nav-link {
   font-weight: 500;
-  color: #333;
-  padding: 0.5rem 1rem;
+  color: #333; /* Dark gray text */
+  padding: 0.5rem 1rem; /* Vertical and horizontal padding */
 }
 
+/* Hover and active states for nav links */
 .tab-menu .nav-link:hover,
 .tab-menu .nav-link.active {
-  background-color: #956680;
-  color: #fff;
-  transition: all 0.3s ease;
-  /* border-radius: 0.25rem;  */
+  background-color: #956680; /* Purple background */
+  color: #fff; /* White text */
+  transition: all 0.3s ease; /* Smooth color change */
+  /* border-radius: 0.25rem;  */ /* Optional rounded corners */
 }
 
-.carousel-cell {
+/* Card container takes full width */
+.card-case {
   width: 100%;
 }
 
-.carousel-cell img {
+/* Images inside card scale responsively */
+.card-case img {
   width: 100%;
   height: auto;
 }
 
+/* Card container is positioned relative for absolute children */
 .card {
   position: relative;
 }
+
+/* Add-to-cart button style: circular button on top-right corner of card */
 .add-to-cart {
   position: absolute;
   width: 2.7rem;
   height: 2.7rem;
-  border-radius: 50%;
-  background-color: #fff;
-  border: #956680 1px solid;
-  color: #956680;
-  right: 0.5rem;
-  top: 0.5rem;
+  border-radius: 50%; /* Circle shape */
+  background-color: #fff; /* White background */
+  border: #956680 1px solid; /* Purple border */
+  color: #956680; /* Purple text */
+  right: 0.5rem; /* Distance from right edge */
+  top: 0.5rem; /* Distance from top edge */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Center + sign */
   font-size: 2rem;
-  cursor: pointer;
-}
-.add-to-cart:hover {
-  background-color: #956680;
-  color: #fff;
-  transition: all 0.3s ease;
+  cursor: pointer; /* Pointer cursor on hover */
 }
 
-/* Hide content by default */
+/* Hover effect for add-to-cart button */
+.add-to-cart:hover {
+  background-color: #956680; /* Purple background */
+  color: #fff; /* White text */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Hide content sections by default */
 .content .hide {
   display: none;
 }
 
-/* Show content when active */
+/* Show content sections when active */
 .content .show {
   display: block;
 }

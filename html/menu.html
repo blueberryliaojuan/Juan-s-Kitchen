@@ -1,275 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!--
+      Author: Juan Liao
+      Project: Juan's Kitchen Online Menu
+      Description:
+        Main HTML page for Juan's Kitchen website.
+        Includes navigation bar, dynamic menu tabs,
+        shopping cart UI, footer with social links,
+        and loads external stylesheets and JS modules.
+
+      Technologies:
+        - Bootstrap 5.3 for styling and responsive layout
+        - Ionicons for icons
+    -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Order System</title>
 
-    <!-- Bootstrap for style -->
+    <!-- Bootstrap CSS for responsive design and styling -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+
+    <!-- Bootstrap JS Bundle with Popper.js for interactive components -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
 
-    <!-- fonts -->
+    <!-- Google Fonts for typography -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap"
       rel="stylesheet"
     />
 
-    <!-- CSS for flickity -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-    />
-
-    <!-- my own css -->
-    <link rel="stylesheet" href="../css/index.css" />
+    <!-- Custom stylesheets -->
+    <!-- <link rel="stylesheet" href="../css/index.css" />
     <link rel="stylesheet" href="../css/menu.css" />
-    <link rel="stylesheet" href="../css/cart.css" />
-
-    <title>Juan's Kitchen</title>
+    <link rel="stylesheet" href="../css/cart.css" /> -->
+    <link rel="stylesheet" href="../css/custom.css" />
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <!-- Brand  Logo -->
-        <a
-          href="/"
-          class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-        >
-          <img class="logo" src="../img/logo.png" alt="" />
-        </a>
-
-        <!-- Hamburger Button -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
-          aria-controls="navbarContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Collapsible Content -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <!-- <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a href="#" class="nav-link active">Menus</a>
-            </li>
-            <li class="nav-item">
-              <a
-                href="./recommendation.html"
-                class="nav-link"
-                aria-current="page"
-                >Recommandations</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="./contact.html" class="nav-link">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="./contact.html" class="nav-link">Find Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="./contact.html" class="nav-link">Contact Us</a>
-            </li>
-          </ul> -->
-        </div>
-      </div>
+    <!-- Navbar (fixed to top) -->
+    <nav
+      class="navbar navbar-expand-lg fixed-top navbar-custom shadow-sm px-4 d-flex justify-content-between align-items-center"
+    >
+      <a href="/" class="navbar-brand p-0">
+        <img src="../img/logo.png" alt="Juan's Kitchen Logo" class="logo" />
+      </a>
+      <button class="btn btn-call-server">Call Server</button>
     </nav>
 
-    <div class="main-content">
-      <div class="main-container">
-        <div class="tab-menu">
-          <nav class="nav flex-column">
-            <a
-              class="nav-link m-2 active"
-              href="#appetizers"
-              data-id="appetizers"
-              >Starters</a
-            >
-            <a class="nav-link m-2" href="#main-courses" data-id="mainCourses"
-              >Mains</a
-            >
-            <a
-              class="nav-link m-2"
-              href="#vegetarian-specials"
-              data-id="vegetarian"
-              >Vegetarian</a
-            >
-            <!-- <a class="nav-link m-2" href="#staple-food" data-id="staple"
-              >Staple Food</a
-            > -->
-            <a class="nav-link m-2" href="#desserts" data-id="desserts"
-              >Desserts</a
-            >
-            <a class="nav-link m-2" href="#beverages" data-id="beverages"
-              >Drinks</a
-            >
-          </nav>
-        </div>
-
-        <main class="content">
-          <div id="appetizers" class="container tab-page px-4"></div>
-
-          <div id="mainCourses" class="container tab-page px-4"></div>
-          <div id="vegetarian" class="container tab-page px-4"></div>
-          <!-- <div id="staple" class="container tab-page px-4"></div> -->
-          <div id="desserts" class="container tab-page px-4"></div>
-          <div id="beverages" class="container tab-page px-4"></div>
-          <!-- </div> -->
-          <div id="cartPage" class="shut">
-            <div class="top">
-              <div class="cart-title">Order Details</div>
-              <div class="cart-shut" id="cartShutter">
-                <!-- <ion-icon name="close-outline"></ion-icon> -->
-                <ion-icon
-                  name="close-circle-outline"
-                  class="close-outline"
-                ></ion-icon>
-              </div>
-            </div>
-
-            <div class="cart">
-              <div id="cartCategory" class="tr">
-                <div>
-                  <input type="checkbox" name="" value="" id="selectAll" />
-                </div>
-                <div>Picture</div>
-                <div>Name</div>
-                <div>Price</div>
-                <div>Quantity</div>
-                <div>Delete</div>
-              </div>
-              <div id="goods">
-                <div class="tr" id="1655771835688">
-                  <div>
-                    <img
-                      src="../img/Appetizers01.jpg"
-                      alt=""
-                      class="cart-item-img"
-                    />
-                  </div>
-                  <div>product</div>
-                  <div>$ price</div>
-                  <div>
-                    <ion-icon
-                      name="remove-circle-outline"
-                      class="quantity-change"
-                    ></ion-icon>
-                    <input type="text" value="1" readonly="" />
-                    <ion-icon
-                      name="add-circle-outline"
-                      class="quantity-change"
-                    ></ion-icon>
-                  </div>
-                  <div>
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tr tr-total">
-                <div>&nbsp</div>
-                <div>&nbsp</div>
-                <div>Cart total</div>
-                <div id="amount"></div>
-                <div>&nbsp</div>
-                <div></div>
-              </div>
-              <div class="tr tr-total">
-                <div>&nbsp</div>
-                <div>&nbsp</div>
-                <div>Tax (5%)</div>
-                <div id="taxAmount"></div>
-                <div>&nbsp</div>
-                <div>&nbsp</div>
-                <div></div>
-              </div>
-              <div class="tr tr-total">
-                <div>&nbsp</div>
-                <div>&nbsp</div>
-                <div>Total</div>
-                <div id="totalAmount">&nbsp</div>
-                <div id="count">&nbsp</div>
-                <div>
-                  <a href="javascript:;" class="r" id="delall">Clear All</a>
-                </div>
-                <!-- <div></div> -->
-              </div>
-            </div>
-            <div class="footer">
-              <div class="place-order">Procced to Checkout</div>
-            </div>
-          </div>
-          <div class="cart-icon" id="cartIcon">
-            <ion-icon name="cart-outline" class="cart-outline"></ion-icon>
-            <div class="num" id="cartNum">0</div>
-          </div>
-        </main>
+    <div class="main-content d-flex">
+      <!-- Sidebar tab menu -->
+      <div class="tab-menu">
+        <nav class="nav flex-column py-5">
+          <!--
+              Tab links:
+              - data-id corresponds to the content section id
+              - Active class highlights the default tab
+            -->
+          <a class="nav-link active" href="#starters" data-id="starters"
+            >Starters</a
+          >
+          <a class="nav-link" href="#mains" data-id="mains">Mains</a>
+          <a class="nav-link" href="#vegetarian" data-id="vegetarian"
+            >Vegetarian</a
+          >
+          <a class="nav-link" href="#desserts" data-id="desserts">Desserts</a>
+          <a class="nav-link" href="#drinks" data-id="drinks">Drinks</a>
+        </nav>
       </div>
-      <!-- footer  -->
-      <div id="footer">
-        <footer class="border-top py-3">
-          <div class="container">
-            <div class="row">
-              <!-- Row 1: Branding -->
-              <div class="col-12 align-items-center">
-                <a
-                  href="/"
-                  class="me-2 text-body-secondary text-decoration-none lh-1"
-                >
-                  <svg class="bi" width="30" height="24">
-                    <use xlink:href="#bootstrap" />
-                  </svg>
-                </a>
-                <span class="text-body-secondary">
-                  &copy; 2024 Juan's Kitchen, Inc
-                </span>
-              </div>
 
-              <!-- Row 2: Social Links -->
-              <div class="col-12 d-flex align-items-center">
-                <ul class="nav list-unstyled d-flex">
-                  <li class="me-3">
-                    <a class="text-body-secondary" href="#">
-                      <ion-icon name="logo-facebook" class="h4"></ion-icon>
-                    </a>
-                  </li>
-                  <li class="me-3">
-                    <a class="text-body-secondary" href="#">
-                      <ion-icon name="logo-pinterest" class="h4"></ion-icon>
-                    </a>
-                  </li>
-                  <li class="me-3">
-                    <a class="text-body-secondary" href="#">
-                      <ion-icon name="logo-instagram" class="h4"></ion-icon>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+      <!-- Main content area -->
+      <main class="content flex-grow-1">
+        <div id="starters" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
+        <div id="mains" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
+        <div
+          id="vegetarian"
+          class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"
+        ></div>
+        <div id="desserts" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
+        <div id="drinks" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
+        <!-- Footer -->
+        <footer
+          id="footer"
+          class="border-top py-3 text-center bg-white mt-auto"
+        >
+          <div
+            class="container d-flex flex-column flex-md-row justify-content-between align-items-center"
+          >
+            <div>
+              <a
+                href="/"
+                class="text-body-secondary text-decoration-none lh-1 me-2"
+              >
+                <svg class="bi" width="30" height="24">
+                  <use xlink:href="#bootstrap" />
+                </svg>
+              </a>
+              <span class="text-body-secondary"
+                >&copy; 2024 Juan's Kitchen, Inc</span
+              >
             </div>
+            <ul class="nav list-unstyled d-flex mb-0">
+              <li class="me-3">
+                <a href="#" class="text-body-secondary"
+                  ><ion-icon name="logo-facebook" class="h4"></ion-icon
+                ></a>
+              </li>
+              <li class="me-3">
+                <a href="#" class="text-body-secondary"
+                  ><ion-icon name="logo-pinterest" class="h4"></ion-icon
+                ></a>
+              </li>
+              <li>
+                <a href="#" class="text-body-secondary"
+                  ><ion-icon name="logo-instagram" class="h4"></ion-icon
+                ></a>
+              </li>
+            </ul>
           </div>
         </footer>
-      </div>
+        <!-- Shopping Cart Panel: initially hidden  -->
+        <!-- 购物车面板 -->
+        <div
+          id="cartPage"
+          class="cart-panel bg-light border rounded shadow position-fixed end-0 bottom-0 d-none"
+          style="width: 400px; height: calc(100vh - 7rem); z-index: 1050"
+        >
+          <!-- 顶部标题和关闭按钮 -->
+          <div
+            class="d-flex justify-content-center align-items-center border-bottom py-3 position-relative"
+          >
+            <h5 class="mb-0 text-primary fw-bold">Order Details</h5>
+            <button
+              type="button"
+              id="cartShutter"
+              class="btn-close position-absolute top-50 end-0 translate-middle-y me-3"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <!-- 购物车内容 -->
+          <div
+            class="cart-content overflow-auto px-3 py-2"
+            style="max-height: calc(100% - 120px)"
+          >
+            <!-- 头部行 -->
+            <div
+              class="row fw-bold border-bottom pb-2 align-items-center text-center"
+            >
+              <div class="col-1"><input type="checkbox" id="selectAll" /></div>
+              <div class="col-2">Picture</div>
+              <div class="col-4 text-start">Name</div>
+              <div class="col-2 text-end">Price</div>
+              <div class="col-2 text-center">Quantity</div>
+              <div class="col-1 text-center">Delete</div>
+            </div>
+
+            <!-- 动态商品列表容器 -->
+            <div id="goods" class="">
+              <!-- 示例商品行 -->
+              <div
+                class="row align-items-center py-2 border-bottom"
+                id="item-1655771835688"
+              >
+                <div class="col-1 text-center">
+                  <input type="checkbox" />
+                </div>
+                <div class="col-2">
+                  <img
+                    src="../img/Appetizers01.jpg"
+                    alt="product"
+                    class="img-fluid rounded"
+                  />
+                </div>
+                <div class="col-4 text-truncate" title="product">product</div>
+                <div class="col-2 text-end">$ price</div>
+                <div
+                  class="col-2 d-flex justify-content-center align-items-center gap-2"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary quantity-decrease"
+                  >
+                    <ion-icon name="remove-circle-outline"></ion-icon>
+                  </button>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm text-center"
+                    value="1"
+                    readonly
+                    style="width: 40px"
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary quantity-increase"
+                  >
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </button>
+                </div>
+                <div class="col-1 text-center">
+                  <button
+                    type="button"
+                    class="btn btn-link text-danger delete-item p-0"
+                  >
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 商品行end -->
+            </div>
+          </div>
+
+          <!-- 底部统计和操作 -->
+          <div class="cart-footer border-top px-3 py-2">
+            <div class="row fw-bold text-primary mb-2">
+              <div class="col-7 text-end">Cart total:</div>
+              <div class="col-5 text-end" id="amount">$0.00</div>
+            </div>
+            <div class="row fw-bold text-primary mb-2">
+              <div class="col-7 text-end">Tax (5%):</div>
+              <div class="col-5 text-end" id="taxAmount">$0.00</div>
+            </div>
+            <div class="row fw-bold text-primary mb-3">
+              <div class="col-7 text-end">Total:</div>
+              <div class="col-5 text-end" id="totalAmount">$0.00</div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <button
+                type="button"
+                id="delall"
+                class="btn btn-outline-danger btn-sm"
+              >
+                Clear All
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm"
+                id="checkoutBtn"
+              >
+                Proceed to Checkout
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating cart icon with item count -->
+        <div
+          class="cart-icon position-fixed cart-icon-pos rounded-circle d-flex align-items-center justify-content-center"
+          id="cartIcon"
+        >
+          <ion-icon name="cart-outline" class="cart-outline"></ion-icon>
+          <div
+            class="num position-absolute rounded-circle text-white d-flex align-items-center justify-content-center"
+            id="cartNum"
+          >
+            0
+          </div>
+        </div>
+      </main>
     </div>
 
-    <!-- ****************************************** -->
-    <!-- ****************************************** -->
-    <!-- JS part -->
+    <!-- ****************************** -->
+    <!-- JavaScript resources and modules -->
 
-    <!-- import ionicons -->
+    <!-- Ionicons for vector icons -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
@@ -278,474 +283,11 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-    <!-- shopping cart -->
+    <!-- Menu rendering and tab switching -->
+    <script type="module" src="../js/menu.js"></script>
+
+    <!-- Shopping cart module -->
     <script type="module" src="../js/cart.js"></script>
-
-    <script>
-      const generateCardContent = (arr) => {
-        let htmlContent = `
-        <div class="carousel-cell py-4" >
-         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-        `;
-        for (let i = 0; i < arr.length; i += 1) {
-          htmlContent += ` 
-        <div class="col">
-          <div class="card shadow-sm" data-url="${arr[i].urls}" data-id="${
-            arr[i].id
-          }"  data-title="${arr[i].title}" data-price="${arr[i].price}">
-                    <picture>
-                      <source
-                        media="(max-width: 600px)"
-                        srcset="${arr[i].urls}"
-                      />
-                      <source
-                        media="(min-width: 601px)"
-                      srcset="${arr[i].url}"
-                      />
-                      <img src="${arr[i].url}" ${
-            arr[i].title || "Dish"
-          }" alt="cat" />
-                    </picture>
-
-                    <div class="card-body">
-                      <p class="card-text">${
-                        arr[i].title || "Delicious Dish"
-                      }</p>
-                      <div
-                        class="d-flex justify-content-between align-items-center"
-                      >
-                        <div class="btn-group"></div>
-                        <small class="text-body-secondary">${
-                          arr[i].price
-                        }</small>
-                      </div>
-                    </div>
-
-                    <div class="add-to-cart">+</div>
-                  </div>
-                  </div>
-          `;
-        }
-        htmlContent += `
-           </div>
-          </div>
-        `;
-        return htmlContent;
-      };
-
-      //**************** appetizers **************
-      let appetizersArr = [
-        {
-          id: "app00",
-          title: "Seaweed Salad",
-          price: "$10.00",
-          url: "../img/Appetizers01.jpg",
-          urls: "../img/Appetizers01s.jpg",
-        },
-        {
-          id: "app01",
-          title: "Fresh Walnut Salad",
-          price: "$10.00",
-          url: "../img/Appetizers02.jpg",
-          urls: "../img/Appetizers02s.jpg",
-        },
-        {
-          id: "app02",
-          title: "Salmon and Bean Sprout Salad",
-          price: "$18.00",
-          url: "../img/Appetizers03.jpg",
-          urls: "../img/Appetizers03s.jpg",
-        },
-        {
-          id: "app03",
-          title: "Scallion Oil Abalone",
-          price: "$35.00",
-          url: "../img/Appetizers04.jpg",
-          urls: "../img/Appetizers04s.jpg",
-        },
-        {
-          id: "app04",
-          title: "Orange Shrimp Salad with Avocadod",
-          price: "$16.00",
-          url: "../img/Appetizers05.jpg",
-          urls: "../img/Appetizers05s.jpg",
-        },
-        {
-          id: "app05",
-          title: "Red Dates and Tremella Soup",
-          price: "$10.00",
-          url: "../img/Appetizers06.jpg",
-          urls: "../img/Appetizers06s.jpg",
-        },
-        {
-          id: "app06",
-          title: "Plum Cherry Tomatoes",
-          price: "$12.00",
-          url: "../img/Appetizers07.jpg",
-          urls: "../img/Appetizers07s.jpg",
-        },
-        {
-          id: "app07",
-          title: "Coconut Cucumber Jelly",
-          price: "$12.00",
-          url: "../img/Appetizers08.jpg",
-          urls: "../img/Appetizers08s.jpg",
-        },
-        {
-          id: "app08",
-          title: "Osmanthus Lotus Root",
-          price: "$15.00",
-          url: "../img/Appetizers09.jpg",
-          urls: "../img/Appetizers09s.jpg",
-        },
-      ];
-      let appetizers = document.querySelector("#appetizers");
-      appetizers.innerHTML = generateCardContent(appetizersArr);
-
-      //**************** Main Course **************
-      //same as above
-      let mainCoursesArr = [
-        {
-          id: "main001",
-          title: "Eel Fillet",
-          price: "$35.00",
-          url: "../img/MainCourses01.jpg",
-          urls: "../img/MainCourses01s.jpg",
-        },
-        {
-          id: "main002",
-          title: "Grilled Lamb Shoulder",
-          price: "$24.00",
-          url: "../img/MainCourses02.jpg",
-          urls: "../img/MainCourses02s.jpg",
-        },
-        {
-          id: "main003",
-          title: "Steamed Grouper",
-          price: "$25.00",
-          url: "../img/MainCourses03.jpg",
-          urls: "../img/MainCourses03s.jpg",
-        },
-        {
-          id: "main004",
-          title: "Garlic Vermicelli Lobster",
-          price: "$25.00",
-          url: "../img/MainCourses04.jpg",
-          urls: "../img//MainCourses04s.jpg",
-        },
-        {
-          id: "main005",
-          title: "Green pepper chicken wings",
-          price: "$12.00",
-          url: "../img/MainCourses05.jpg",
-          urls: "../img/MainCourses05s.jpg",
-        },
-        {
-          id: "main006",
-          title: "Black pepper and garlic beef",
-          price: "$15.00",
-          url: "../img/MainCourses06.jpg",
-          urls: "../img/MainCourses06s.jpg",
-        },
-        {
-          id: "main007",
-          title: "Fried Octopus with Vegetables",
-          price: "$25.00",
-          url: "../img/MainCourses07.jpg",
-          urls: "../img/MainCourses07s.jpg",
-        },
-        {
-          id: "main008",
-          title: "Fried Sea Cucumber with Vegetables",
-          price: "$35.00",
-          url: "../img/MainCourses08.jpg",
-          urls: "../img/MainCourses08s.jpg",
-        },
-        {
-          id: "main009",
-          title: "Sweet and Sour Pork with Pineapple",
-          price: "$18.00",
-          url: "../img/MainCourses09.jpg",
-          urls: "../img/MainCourses09s.jpg",
-        },
-      ];
-      const mainCourses = document.querySelector("#mainCourses");
-      mainCourses.innerHTML = generateCardContent(mainCoursesArr);
-
-      //**************** vegetarian **************
-      //same as above
-      let vegetarianArr = [
-        {
-          title: "Vegetable Spring Rolls",
-          price: "$10.00",
-          url: "../img/Vegetarian01.jpg",
-          urls: "../img/Vegetarian01s.jpg",
-        },
-        {
-          title: "Stir-fried vegetables",
-          price: "$12.00",
-          url: "../img/Vegetarian02.jpg",
-          urls: "../img/Vegetarian02s.jpg",
-        },
-        {
-          title: "Cold Cowpea salad",
-          price: "$10.00",
-          url: "../img/Vegetarian03.jpg",
-          urls: "../img/Vegetarian03s.jpg",
-        },
-        {
-          title: "Fried Okra with Green Peppers",
-          price: "$10.00",
-          url: "../img/Vegetarian04.jpg",
-          urls: "../img/Vegetarian04s.jpg",
-        },
-        {
-          title: "Spicy tofu pudding",
-          price: "$8.00",
-          url: "../img/Vegetarian05.jpg",
-          urls: "../img/Vegetarian05s.jpg",
-        },
-        {
-          title: "Fruit dumplings",
-          price: "$9.00",
-          url: "../img/Vegetarian06.jpg",
-          urls: "../img/Vegetarian06s.jpg",
-        },
-        {
-          title: "Jackfruit Sticky Rice",
-          price: "$14.00",
-          url: "../img/Vegetarian07.jpg",
-          urls: "../img/Vegetarian07s.jpg",
-        },
-        {
-          title: "Chickpea pancakes",
-          price: "$12.00",
-          url: "../img/Vegetarian08.jpg",
-          urls: "../img/Vegetarian08s.jpg",
-        },
-        {
-          title: "Stir-fried Amaranth",
-          price: "$9.00",
-          url: "../img/Vegetarian09.jpg",
-          urls: "../img/Vegetarian09s.jpg",
-        },
-      ];
-      const vegetarian = document.querySelector("#vegetarian");
-      vegetarian.innerHTML = generateCardContent(vegetarianArr);
-      //**************** staple food **************
-      //same as above
-      let stapleArr = [
-        {
-          title: "Seafood Noodles",
-          price: "$12.00",
-          url: "../img/staple01.jpg",
-          urls: "../img/staple01s.jpg",
-        },
-        {
-          title: "Shrimp and Vegetable Rolls",
-          price: "$15.00",
-          url: "../img/staple02.jpg",
-          urls: "../img/staple02s.jpg",
-        },
-        {
-          title: "Shrimp Sushi Roll",
-          price: "$15.00",
-          url: "../img/staple03.jpg",
-          urls: "../img/staple03s.jpg",
-        },
-        {
-          title: "Sausage Fried Rice Noodles",
-          price: "$12.00",
-          url: "../img/staple04.jpg",
-          urls: "../img/staple04s.jpg",
-        },
-        {
-          title: "Beef buns",
-          price: "$15.00",
-          url: "../img/staple05.jpg",
-          urls: "../img/staple05s.jpg",
-        },
-        {
-          title: "Vegetable Fried Rice",
-          price: "$11.00",
-          url: "../img/staple06.jpg",
-          urls: "../img/staple06s.jpg",
-        },
-        {
-          title: "Seafood Noodle",
-          price: "$10.00",
-          url: "../img/staple07.jpg",
-          urls: "../img/staple07s.jpg",
-        },
-        {
-          title: "Pineapple Fried Rice",
-          price: "$15.00",
-          url: "../img/staple08.jpg",
-          urls: "../img/staple08s.jpg",
-        },
-        {
-          title: "Pork and Mushroom Buns",
-          price: "$15.00",
-          url: "../img/staple09.jpg",
-          urls: "../img/staple09s.jpg",
-        },
-      ];
-      const staple = document.querySelector("#staple");
-      staple.innerHTML = generateCardContent(stapleArr);
-      //**************** desserts **************
-      //same as above
-      let dessertsArr = [
-        {
-          title: "Coconut Waffles",
-          price: "$6.00",
-          url: "../img/Desserts01.jpg",
-          urls: "../img/Desserts01s.jpg",
-        },
-        {
-          title: "Chocolate Cinnamon Balls",
-          price: "$8.00",
-          url: "../img/Desserts02.jpg",
-          urls: "../img/Desserts02s.jpg",
-        },
-        {
-          title: "Blueberry Muffins",
-          price: "$4.00",
-          url: "../img/Desserts03.jpg",
-          urls: "../img/Desserts03s.jpg",
-        },
-        {
-          title: "Chocolate Pumpkin Bread",
-          price: "$7.00",
-          url: "../img/Desserts04.jpg",
-          urls: "../img/Desserts04s.jpg",
-        },
-        {
-          title: "Mango Cake",
-          price: "$8.00",
-          url: "../img/Desserts05.jpg",
-          urls: "../img/Desserts05s.jpg",
-        },
-        {
-          title: "Coconut/Chocolate Egg Tart ",
-          price: "$8.00",
-          url: "../img/Desserts06.jpg",
-          urls: "../img/Desserts06s.jpg",
-        },
-        {
-          title: "Sweet Fruit Dumpling",
-          price: "$10.00",
-          url: "../img/Desserts07.jpg",
-          urls: "../img/Desserts07s.jpg",
-        },
-        {
-          title: "Pumpkin Bread",
-          price: "$10.00",
-          url: "../img/Desserts08.jpg",
-          urls: "../img/Desserts08s.jpg",
-        },
-        {
-          title: "Purple Sweet Potato and Coconut Bread",
-          price: "$10.00",
-          url: "../img/Desserts09.jpg",
-          urls: "../img/Desserts09s.jpg",
-        },
-      ];
-      const desserts = document.querySelector("#desserts");
-      desserts.innerHTML = generateCardContent(dessertsArr);
-
-      //**************** beverages **************
-      //same as above
-      let beveragesArr = [
-        {
-          title: "Pomegranate Wine",
-          price: "$12.00",
-          url: "../img/Beverages04.jpg",
-          urls: "../img/Beverages04s.jpg",
-        },
-        {
-          title: "Mulberry Smoothie",
-          price: "$10.00",
-          url: "../img/Beverages03.jpg",
-          urls: "../img/Beverages03s.jpg",
-        },
-        {
-          title: "Grapefruit Wine",
-          price: "$12.00",
-          url: "../img/Beverages05.jpg",
-          urls: "../img/Beverages05s.jpg",
-        },
-        {
-          title: "Pitaya Smoothie",
-          price: "$10.00",
-          url: "../img/Beverages01.jpg",
-          urls: "../img/Beverages01s.jpg",
-        },
-        {
-          title: "Mango Smoothie",
-          price: "$10.00",
-          url: "../img/Beverages02.jpg",
-          urls: "../img/Beverages02s.jpg",
-        },
-        {
-          title: "Milk Tea",
-          price: "$7.00",
-          url: "../img/Beverages06.jpg",
-          urls: "../img/Beverages06s.jpg",
-        },
-      ];
-      const beverages = document.querySelector("#beverages");
-      beverages.innerHTML = generateCardContent(beveragesArr);
-
-      // Tab menu functionality
-      const tabMenu = document.querySelector(".tab-menu");
-      const tabPages = document.querySelectorAll(".tab-page");
-      const tabLinks = tabMenu.querySelectorAll(".tab-menu a");
-      // console.log("tabLinks", tabLinks);
-
-      //only show the Appetizers (first tab) at the begining
-      Array.from(tabPages).forEach((child) => {
-        child.classList.remove("show");
-        child.classList.add("hide");
-      });
-      tabPages[0].classList.remove("hide");
-      tabPages[0].classList.add("show");
-
-      if (tabMenu && tabPages) {
-        tabMenu.addEventListener("click", function (e) {
-          // Ensure the clicked element has a dataset with an ID
-          const clickedTab = e.target;
-          const { id } = clickedTab.dataset;
-          // console.log("id", id);
-
-          // If there's no valid ID in the clicked tab, return early
-          if (!id) return;
-
-          // console.log("Clicked tab:", clickedTab);
-
-          Array.from(tabLinks).forEach((link) => {
-            link.classList.remove("active");
-          });
-
-          // Add 'active' class to the clicked tab
-          clickedTab.classList.add("active");
-
-          // Loop through all content children and hide them
-          Array.from(tabPages).forEach((child) => {
-            child.classList.remove("show");
-            child.classList.add("hide");
-          });
-
-          // Show the targeted content element
-          const targetContent = document.querySelector(`#${id}`);
-          console.log("Target content:", targetContent);
-          if (targetContent) {
-            targetContent.classList.remove("hide");
-            targetContent.classList.add("show");
-          }
-        });
-      }
-    </script>
   </body>
 </html>

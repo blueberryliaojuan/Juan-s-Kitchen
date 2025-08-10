@@ -1,0 +1,293 @@
+/* 字体和背景 */
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #fff;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+}
+
+/* reset bootstrap */
+.text-primary {
+  color: #956680 !important;
+}
+
+.btn-outline-danger {
+  padding: 0.4rem 1rem !important;
+}
+
+.custom-btn {
+  background-color: #956680;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-btn:hover {
+  background-color: #ab957e; /* 悬停时颜色 */
+  border-color: #ab957e;
+  color: white;
+}
+
+.add-to-cart {
+  width: 2.8rem;
+  height: 2.8rem;
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+}
+
+/* 按钮 */
+.btn-call-server {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-call-server span {
+  margin-left: 0.4rem;
+}
+.btn-call-server,
+.btn-checkout {
+  background-color: #ab957e;
+  border: none;
+  color: white;
+  padding: 0.4rem 1rem;
+}
+
+.btn-call-server:hover,
+.btn-checkout:hover {
+  background-color: #956680;
+  color: white;
+}
+
+.quantity-decrease,
+.quantity-increase,
+.delete-item {
+  font-size: 1.2rem;
+  width: 2rem;
+  height: 2rem;
+}
+/* Navbar */
+.navbar-custom {
+  height: 7rem;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1030; /* Bootstrap 默认navbar z-index */
+  border-bottom: 1px solid #ddd;
+}
+
+/* Logo */
+.navbar .logo {
+  height: 2.5rem;
+  width: auto;
+}
+
+/* 主容器布局 */
+.main-content {
+  margin-top: 7rem; /* 顶部留出 navbar 高度 */
+  height: calc(100vh - 7rem);
+  overflow-y: auto;
+}
+
+/* 侧边栏菜单 */
+.tab-menu {
+  width: 16%;
+  height: 100%;
+  box-sizing: border-box;
+  border-right: 1px solid #ddd;
+  /* padding-top: 1rem; */
+}
+
+.tab-menu .nav-link {
+  color: #333;
+  font-weight: 500;
+}
+
+.tab-menu .nav-link:hover,
+.tab-menu .nav-link.active {
+  background-color: #956680;
+  color: #fff;
+  transition: 0.3s;
+}
+
+/* 主内容区域 */
+.content {
+  width: 80%;
+  height: 100%;
+  background-color: #ebe3e0;
+  /* padding: 1rem 2rem; */
+  overflow-y: auto;
+}
+
+/* menu */
+.card-body .card-title {
+  height: 70px;
+}
+
+/* 购物车面板 */
+/* 购物车面板基础样式 */
+.cart-panel {
+  /* max-width: 400px; */
+  height: calc(100vh - 7rem);
+  width: 85%;
+  padding: 0;
+  background: linear-gradient(135deg, #f9f9f9, #eaeaea);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1050;
+}
+
+/* 购物车内容滚动 */
+.cart-content {
+  overflow-y: auto;
+}
+
+/* 图片限制 */
+.cart-content img {
+  max-width: 60px;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* 数量输入框 */
+.cart-content input[type="text"] {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ion-icon大小调整 */
+.quantity-decrease ion-icon,
+.quantity-increase ion-icon,
+.delete-item ion-icon {
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.quantity-decrease ion-icon:hover,
+.quantity-increase ion-icon:hover,
+.delete-item ion-icon:hover {
+  color: white;
+}
+
+/* 标题文字 */
+h5.text-primary {
+  font-family: "Playfair Display", serif;
+}
+
+/* 响应式处理 */
+@media (max-width: 576px) {
+  .cart-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+  }
+}
+
+/* 显示时用 .show 类 */
+.shut {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+
+/* 浮动购物车图标 */
+.cart-icon-pos {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.cart-icon {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  background-color: #ab957e;
+  color: white;
+  position: fixed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1060;
+}
+
+.cart-icon:hover {
+  background-color: #956680;
+  transition: background-color 0.3s ease;
+}
+
+/* 购物车数量红点 */
+
+.num {
+  position: absolute;
+  top: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #3d0814;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+.cartShutter {
+  width: 2rem;
+  height: 2rem;
+  color: #3d0814;
+}
+
+/* ion-icon 主题色 */
+ion-icon {
+  color: white !important;
+}
+
+/* Footer */
+#footer {
+  background-color: #fff;
+  height: 7rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+#footer .text-body-secondary {
+  color: #6c757d !important;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .navbar .logo {
+    height: 2rem;
+    width: auto;
+  }
+  .tab-menu {
+    display: none; /* 小屏隐藏侧边栏 */
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .cart-panel {
+    width: 90%;
+    height: 80%;
+  }
+}
