@@ -1,42 +1,59 @@
-/* common css for all pages */
+/**
+ * common.css
+ *
+ * Common CSS styles shared across all pages.
+ */
 
+/* ===============================
+   Body and Headings
+   =============================== */
 body {
   background-color: #fff;
   font-family: "Lato", sans-serif;
 }
+
 h1,
 h2,
 h3 {
   font-family: "Playfair Display", serif;
 }
 
+/* ===============================
+   Navigation Bar Styles
+   =============================== */
 nav {
   background-color: #fff;
 }
+
 .navbar {
-  background-color: #fff; /* Set background color */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-  z-index: 1000; /* Ensure it stays above other content */
-  border-bottom: 1px solid #ddd; /* Add a border to distinguish header */
-  height: 7rem;
+  background-color: #fff; /* Set navbar background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow under navbar */
+  z-index: 1000; /* Make sure navbar is on top */
+  border-bottom: 1px solid #ddd; /* Border line at bottom of navbar */
+  height: 7rem; /* Fixed height */
 }
 
+/* Logo size */
 .navbar .logo {
-  height: 3rem; /* Logo height */
+  height: 3rem; /* Fixed height for logo */
   width: auto; /* Maintain aspect ratio */
 }
 
+/* Call server button */
 .call-server {
   border: none;
   width: 10rem;
   height: 3rem;
   line-height: 3rem;
-  background-color: #ab957e;
+  background-color: #ab957e; /* Custom button background */
   color: #fff;
   text-align: center;
   cursor: pointer;
 }
 
+/* ===============================
+   Footer Styles
+   =============================== */
 #footer {
   width: 100%;
   background: #fff;
@@ -44,46 +61,66 @@ nav {
   padding: 10px 0;
   height: 7rem;
 }
+
 footer {
   padding-top: 1rem;
 }
 
+/* ===============================
+   Navigation Links Styling
+   =============================== */
 .nav-link {
-  color: #dcbdae;
-}
-.nav-link:visited {
-  color: #dcbdae;
-}
-.nav-pills .nav-link.active {
-  background-color: #ab957e;
+  color: #dcbdae; /* Link color */
 }
 
+.nav-link:visited {
+  color: #dcbdae; /* Visited link color same as normal */
+}
+
+/* Active nav pills */
+.nav-pills .nav-link.active {
+  background-color: #ab957e; /* Active tab background */
+}
+
+/* Fullpage.js navigation dots styling */
 #fp-nav ul li a span,
 .fp-slidesNav ul li a span {
-  background-color: #ab957e;
+  background-color: #ab957e; /* Active dot color */
 }
+
+/* Navbar nav active and show states */
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
   background-color: #ab957e;
-  color: #fff;
+  color: #fff; /* White text on active nav */
 }
 
+/* ===============================
+   Button Primary Styles
+   =============================== */
 .btn-primary {
-  background-color: #956680;
+  background-color: #956680; /* Primary button color */
   border: none;
 }
+
 .btn-primary:hover {
-  background-color: #ab957e;
+  background-color: #ab957e; /* Hover color */
 }
 
 .btn-primary:visited {
-  background-color: #956680;
+  background-color: #956680; /* Visited button color */
 }
 
+/* ===============================
+   Card Text Height Fix
+   =============================== */
 .card-text {
-  height: 3rem;
+  height: 3rem; /* Fixed height for card text */
 }
 
+/* ===============================
+   Ion Icon Color Override
+   =============================== */
 ion-icon {
-  color: #ab957e !important;
+  color: #ab957e !important; /* Custom icon color */
 }

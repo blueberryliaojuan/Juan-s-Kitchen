@@ -16,8 +16,19 @@
     -->
 
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurant Order System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Juan's Kitchen online menu and ordering system. Browse starters, mains, desserts, drinks, and place your order easily."
+    />
+    <meta
+      name="keywords"
+      content="restaurant, online menu, order system, food, Juan's Kitchen, starters, mains, desserts, drinks"
+    />
+    <meta name="author" content="Juan Liao" />
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
+
+    <title>Juan's Kitchen - Online Menu & Ordering System</title>
 
     <!-- Bootstrap CSS for responsive design and styling -->
     <link
@@ -27,13 +38,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- Bootstrap JS Bundle with Popper.js for interactive components -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-
     <!-- Google Fonts for typography -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap"
@@ -41,74 +45,155 @@
     />
 
     <!-- Custom stylesheets -->
-    <!-- <link rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="../css/menu.css" />
-    <link rel="stylesheet" href="../css/cart.css" /> -->
     <link rel="stylesheet" href="./css/custom.css" />
   </head>
+
   <body>
     <!-- Navbar (fixed to top) -->
     <nav
       class="navbar navbar-expand-lg fixed-top navbar-custom shadow-sm px-4 d-flex justify-content-between align-items-center"
     >
       <a href="/" class="navbar-brand p-0">
-        <img src="./img/logo.png" alt="Juan's Kitchen Logo" class="logo" />
+        <img
+          src="./img/logo.png"
+          alt="Juan's Kitchen Logo"
+          class="logo"
+          loading="lazy"
+          width="120"
+          height="60"
+        />
       </a>
-      <button class="btn btn-call-server" aria-label="Call us">
-        <ion-icon name="call-outline" size="large"></ion-icon
-        ><span>Call Server</span>
+      <button type="button" class="btn btn-call-server" aria-label="Call us">
+        <ion-icon name="call-outline" size="large"></ion-icon>
+        <span>Call Server</span>
       </button>
     </nav>
 
     <div class="main-content d-flex">
       <!-- Sidebar tab menu -->
-      <div class="tab-menu">
+      <div class="tab-menu" role="tablist" aria-label="Menu categories">
         <nav class="nav flex-column py-5">
           <!--
               Tab links:
               - data-id corresponds to the content section id
               - Active class highlights the default tab
             -->
-          <a class="nav-link active" href="#starters" data-id="starters"
+          <a
+            class="nav-link active"
+            href="#starters"
+            data-id="starters"
+            role="tab"
+            aria-selected="true"
+            aria-controls="starters"
+            id="tab-starters"
             >Starters</a
           >
-          <a class="nav-link" href="#mains" data-id="mains">Mains</a>
-          <a class="nav-link" href="#vegetarian" data-id="vegetarian"
+          <a
+            class="nav-link"
+            href="#mains"
+            data-id="mains"
+            role="tab"
+            aria-selected="false"
+            aria-controls="mains"
+            id="tab-mains"
+            >Mains</a
+          >
+          <a
+            class="nav-link"
+            href="#vegetarian"
+            data-id="vegetarian"
+            role="tab"
+            aria-selected="false"
+            aria-controls="vegetarian"
+            id="tab-vegetarian"
             >Vegetarian</a
           >
-          <a class="nav-link" href="#desserts" data-id="desserts">Desserts</a>
-          <a class="nav-link" href="#drinks" data-id="drinks">Drinks</a>
+          <a
+            class="nav-link"
+            href="#desserts"
+            data-id="desserts"
+            role="tab"
+            aria-selected="false"
+            aria-controls="desserts"
+            id="tab-desserts"
+            >Desserts</a
+          >
+          <a
+            class="nav-link"
+            href="#drinks"
+            data-id="drinks"
+            role="tab"
+            aria-selected="false"
+            aria-controls="drinks"
+            id="tab-drinks"
+            >Drinks</a
+          >
         </nav>
 
-        <div class="suggestion">
+        <div class="suggestion" role="region" aria-labelledby="suggestionTitle">
           <div class="table-info">Your Table No: A07</div>
-          <div id="suggestion-icon">
+          <div id="suggestion-icon" aria-hidden="true">
             <ion-icon name="create-outline" size="large"></ion-icon>
           </div>
 
-          <h4>Have Suggestions?</h4>
+          <h4 id="suggestionTitle">Have Suggestions?</h4>
           <p>
             Share your feedback and get <span class="p-1">5% off</span> your
             next meal.
           </p>
-          <button id="suggestionBtn" class="btn btn-checkout">Send Now</button>
+          <button id="suggestionBtn" class="btn btn-checkout" type="button">
+            Send Now
+          </button>
         </div>
       </div>
 
       <!-- Main content area -->
       <main class="content flex-grow-1">
-        <div id="starters" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
-        <div id="mains" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
+        <div
+          id="starters"
+          class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"
+          role="tabpanel"
+          aria-labelledby="tab-starters"
+          tabindex="0"
+        ></div>
+        <div
+          id="mains"
+          class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"
+          role="tabpanel"
+          aria-labelledby="tab-mains"
+          tabindex="0"
+          hidden
+        ></div>
         <div
           id="vegetarian"
           class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"
+          role="tabpanel"
+          aria-labelledby="tab-vegetarian"
+          tabindex="0"
+          hidden
         ></div>
-        <div id="desserts" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
-        <div id="drinks" class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"></div>
+        <div
+          id="desserts"
+          class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"
+          role="tabpanel"
+          aria-labelledby="tab-desserts"
+          tabindex="0"
+          hidden
+        ></div>
+        <div
+          id="drinks"
+          class="tab-page px-2 px-sm-3 px-md-4 px-lg-5"
+          role="tabpanel"
+          aria-labelledby="tab-drinks"
+          tabindex="0"
+          hidden
+        ></div>
+
         <!-- Footer -->
         <footer
           id="footer"
           class="border-top py-3 text-center bg-white mt-auto"
+          role="contentinfo"
         >
           <div
             class="container d-flex flex-column flex-md-row justify-content-between align-items-center"
@@ -118,7 +203,13 @@
                 href="/"
                 class="text-body-secondary text-decoration-none lh-1 me-2"
               >
-                <svg class="bi" width="30" height="24">
+                <svg
+                  class="bi"
+                  width="30"
+                  height="24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
                   <use xlink:href="#bootstrap" />
                 </svg>
               </a>
@@ -128,30 +219,33 @@
             </div>
             <ul class="nav list-unstyled d-flex mb-0">
               <li class="me-3">
-                <a href="#" class="text-body-secondary"
+                <a href="#" class="text-body-secondary" aria-label="Facebook"
                   ><ion-icon name="logo-facebook" class="h4"></ion-icon
                 ></a>
               </li>
               <li class="me-3">
-                <a href="#" class="text-body-secondary"
+                <a href="#" class="text-body-secondary" aria-label="Pinterest"
                   ><ion-icon name="logo-pinterest" class="h4"></ion-icon
                 ></a>
               </li>
               <li>
-                <a href="#" class="text-body-secondary"
+                <a href="#" class="text-body-secondary" aria-label="Instagram"
                   ><ion-icon name="logo-instagram" class="h4"></ion-icon
                 ></a>
               </li>
             </ul>
           </div>
         </footer>
-        <!-- Shopping Cart Panel: initially hidden  -->
-        <!-- 购物车面板 -->
+
+        <!-- Shopping Cart Panel: initially hidden -->
         <div
           id="cartPage"
           class="cart-panel bg-light border rounded shadow position-fixed end-0 bottom-0 d-none"
+          role="region"
+          aria-label="Shopping cart panel"
+          style="width: 400px; height: calc(100vh - 7rem)"
         >
-          <!-- 顶部标题和关闭按钮 -->
+          <!-- Top title and close button -->
           <div
             class="d-flex justify-content-center align-items-center border-bottom py-3 position-relative"
           >
@@ -160,22 +254,28 @@
               type="button"
               id="cartShutter"
               class="custom-btn cartShutter position-absolute top-50 end-0 translate-middle-y me-3"
-              aria-label="Close"
+              aria-label="Close shopping cart"
             >
               <ion-icon name="close-outline" size="large"></ion-icon>
             </button>
           </div>
 
-          <!-- 购物车内容 -->
+          <!-- Cart content -->
           <div
             class="cart-content overflow-auto px-3 py-2"
             style="max-height: calc(100% - 120px)"
           >
-            <!-- 头部行 -->
+            <!-- Header row -->
             <div
               class="row fw-bold border-bottom pb-2 align-items-center text-center"
             >
-              <div class="col-1"><input type="checkbox" id="selectAll" /></div>
+              <div class="col-1">
+                <input
+                  type="checkbox"
+                  id="selectAll"
+                  aria-label="Select all items"
+                />
+              </div>
               <div class="col-2">Picture</div>
               <div class="col-4 text-start">Name</div>
               <div class="col-2 text-end">Price</div>
@@ -183,72 +283,45 @@
               <div class="col-1 text-center">Delete</div>
             </div>
 
-            <!-- 动态商品列表容器 -->
-            <div id="goods" class="">
-              <!-- <div
-                class="row align-items-center py-2 border-bottom"
-                id="item-1655771835688"
-              >
-                <div class="col-1 text-center">
-                  <input type="checkbox" />
-                </div>
-                <div class="col-2">
-                  <img
-                    src="./img/Appetizers01.jpg"
-                    alt="product"
-                    class="img-fluid rounded"
-                  />
-                </div>
-                <div class="col-4 text-truncate" title="product">product</div>
-                <div class="col-2 text-end">$ price</div>
-                <div
-                  class="col-2 d-flex justify-content-center align-items-center gap-2"
-                >
-                  <button type="button" class="custom-btn quantity-decrease">
-                    <ion-icon name="remove-circle-outline"></ion-icon>
-                  </button>
-                  <input
-                    type="text"
-                    class="form-control form-control-sm text-center"
-                    value="1"
-                    readonly
-                    style="width: 40px"
-                  />
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-outline-secondary quantity-increase"
-                  >
-                    <ion-icon name="add-circle-outline"></ion-icon>
-                  </button>
-                </div>
-                <div class="col-1 text-center">
-                  <button
-                    type="button"
-                    class="custom-btn text-danger delete-item p-0"
-                  >
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </button>
-                </div>
-              </div> -->
-            </div>
+            <!-- Dynamic product list container -->
+            <div id="goods"></div>
           </div>
 
-          <!-- 底部统计和操作 -->
+          <!-- Footer totals and actions -->
           <div class="cart-footer border-top px-4 py-4">
             <div class="row fw-bold text-primary mb-2">
               <div class="col-7 text-end">Cart total:</div>
-              <div class="col-5 text-end" id="amount">$0.00</div>
+              <div
+                class="col-5 text-end"
+                id="amount"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                $0.00
+              </div>
             </div>
             <div class="row fw-bold text-primary mb-2">
               <div class="col-7 text-end">Tax (5%):</div>
-              <div class="col-5 text-end" id="taxAmount">$0.00</div>
+              <div
+                class="col-5 text-end"
+                id="taxAmount"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                $0.00
+              </div>
             </div>
             <div class="row fw-bold text-primary mb-2">
               <div class="col-7 text-end">Coupon Code:</div>
 
-              <div class="col-3 text-start" id="taxAmount">
+              <div class="col-3 text-start" id="couponSection">
                 <div class="coupon-section">
-                  <input type="text" name="coupon" class="coupon-input" />
+                  <input
+                    type="text"
+                    name="coupon"
+                    class="coupon-input"
+                    aria-label="Coupon code input"
+                  />
                   <button
                     type="button"
                     id="couponIcon"
@@ -258,11 +331,25 @@
                   </button>
                 </div>
               </div>
-              <div class="col-2 text-end" id="couponDiscountAmount">$0.00</div>
+              <div
+                class="col-2 text-end"
+                id="couponDiscountAmount"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                $0.00
+              </div>
             </div>
             <div class="row fw-bold text-primary mb-3">
               <div class="col-7 text-end">Total:</div>
-              <div class="col-5 text-end" id="totalAmount">$0.00</div>
+              <div
+                class="col-5 text-end"
+                id="totalAmount"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                $0.00
+              </div>
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
@@ -284,27 +371,35 @@
         <div
           class="cart-icon position-fixed cart-icon-pos rounded-circle d-flex align-items-center justify-content-center"
           id="cartIcon"
+          role="button"
+          tabindex="0"
+          aria-label="Shopping cart"
         >
           <ion-icon name="cart-outline" class="cart-outline"></ion-icon>
           <div
             class="num position-absolute rounded-circle text-white d-flex align-items-center justify-content-center"
             id="cartNum"
+            aria-live="polite"
+            aria-atomic="true"
           >
             0
           </div>
         </div>
 
-        <!-- suggestion面板 -->
+        <!-- Suggestion panel -->
         <div
           id="suggestionPage"
           class="suggestion-panel bg-light border rounded shadow position-fixed end-0 bottom-0 d-none"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="suggestionTitle"
         >
           <div class="position-relative suggestion-shutter-case">
             <button
               type="button"
               id="suggestionShutter"
               class="custom-btn suggestion-close-btn position-absolute top-50 end-0 translate-middle-y me-3"
-              aria-label="Close"
+              aria-label="Close suggestions panel"
             >
               <ion-icon name="close-outline" size="large"></ion-icon>
             </button>
@@ -347,9 +442,9 @@
                   type="button"
                   class="emoji-btn"
                   data-value="natural"
-                  aria-label="Natural"
+                  aria-label="Neutral"
                 >
-                  😐<br /><small>Natural</small>
+                  😐<br /><small>Neutral</small>
                 </button>
                 <button
                   type="button"
@@ -363,7 +458,7 @@
                   type="button"
                   class="emoji-btn"
                   data-value="loved"
-                  aria-label="Loved it!"
+                  aria-label="Loved it"
                 >
                   😍<br /><small>Loved it!</small>
                 </button>
@@ -375,6 +470,7 @@
                 id="suggestionComment"
                 placeholder="Add a comment..."
                 rows="6"
+                aria-label="Suggestions and comments"
               ></textarea>
 
               <div class="text-center">
@@ -390,12 +486,27 @@
           </div>
         </div>
 
-        <div id="feedbackModal" class="modal-overlay" style="display: none">
+        <!-- Feedback modal -->
+        <div
+          id="feedbackModal"
+          class="modal-overlay"
+          style="display: none"
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="feedbackModalTitle"
+          aria-describedby="feedbackModalDesc"
+        >
           <div class="modal-content">
-            <p>Thank you for your feedback! Here is your 5% discount code:</p>
-            <p><strong class="text-black 5em">HE88T7</strong></p>
+            <p id="feedbackModalDesc">
+              Thank you for your feedback! Here is your 5% discount code:
+            </p>
+            <p id="feedbackModalTitle" class="text-black fs-3 fw-bold">
+              HE88T7
+            </p>
             <p>You can use it on your next visit within the next 30 days.</p>
-            <button id="closeModalBtn" class="btn btn-checkout">Close</button>
+            <button id="closeModalBtn" class="btn btn-checkout" type="button">
+              Close
+            </button>
           </div>
         </div>
       </main>
@@ -404,23 +515,33 @@
     <!-- ****************************** -->
     <!-- JavaScript resources and modules -->
 
+    <!-- Bootstrap JS Bundle with Popper.js for interactive components -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+      defer
+    ></script>
+
     <!-- Ionicons for vector icons -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      defer
     ></script>
     <script
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      defer
     ></script>
 
     <!-- Menu rendering and tab switching -->
-    <script type="module" src="./js/menu.js"></script>
+    <script type="module" src="./js/menu.js" defer></script>
 
     <!-- Shopping cart module -->
-    <script type="module" src="./js/cart.js"></script>
+    <script type="module" src="./js/cart.js" defer></script>
 
-    <!-- suggestion -->
-    <script type="module" src="./js/suggestion.js"></script>
+    <!-- Suggestion -->
+    <script type="module" src="./js/suggestion.js" defer></script>
   </body>
 </html>

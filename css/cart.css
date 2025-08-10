@@ -1,24 +1,39 @@
+/**
+ * cart.css
+ *
+ * Styles for the shopping cart panel and related UI components,
+ * including layout, animations, responsiveness, and interaction feedback.
+ */
+
+/* ================================
+   Cart Panel Container
+   ================================ */
 #cartPage {
-  width: 50%;
-  height: calc(100dvh - 7rem);
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #f9f9f9, #eaeaea);
-  background-size: cover;
-  padding: 2rem;
-  /* border-radius: 12px; */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.3s ease;
-  z-index: 1;
+  width: 50%; /* Half width of viewport */
+  height: calc(100dvh - 7rem); /* Full viewport height minus header/footer */
+  overflow-y: auto; /* Scroll vertically if content overflows */
+  border: 1px solid #ccc; /* Light border around cart */
+  position: fixed; /* Fixed position on screen */
+  right: 0; /* Positioned at right edge */
+  bottom: 0; /* Positioned at bottom */
+  background: linear-gradient(
+    135deg,
+    #f9f9f9,
+    #eaeaea
+  ); /* Gradient background */
+  background-size: cover; /* Ensure gradient covers entire area */
+  padding: 2rem; /* Internal spacing */
+  /* border-radius: 12px; */ /* Optional rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  animation: fadeIn 0.3s ease; /* Fade-in animation on show */
+  z-index: 1; /* Layer above default content */
 }
-/*  Add a fade-in animation for the cart */
+
+/* Fade-in animation for cart panel */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(20px); /* Slide from right */
   }
   to {
     opacity: 1;
@@ -26,105 +41,125 @@
   }
 }
 
+/* Show and Hide classes for toggling visibility */
 .show {
   display: block;
 }
 .shut {
   display: none;
 }
+
+/* ================================
+   Cart Header / Top Bar
+   ================================ */
 .top {
-  /* background: #fff; */
-  height: 4rem;
-  position: relative;
+  height: 4rem; /* Fixed height for header */
+  position: relative; /* Position children absolutely */
 }
+
+/* Cart title centered at top */
 .cart-title {
   position: absolute;
   top: 1rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* Center horizontally */
   font-size: 2rem;
 }
+
+/* Close button positioned top-right */
 .cart-shut {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  cursor: pointer;
+  cursor: pointer; /* Pointer cursor on hover */
 }
+
+/* Close icon size */
 .close-outline {
   width: 2rem;
   height: 2rem;
 }
 
+/* ================================
+   Cart Items Container
+   ================================ */
 .cart {
-  background: #fff;
+  background: #fff; /* White background for content */
   margin-top: 20px;
   padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
+/* Cart item rows as flex containers */
 .cart .tr {
   display: flex;
   align-items: center;
   padding: 10px 0;
 }
 
+/* Cart category header style */
 #cartCategory {
   font-weight: bold;
   border-bottom: 2px solid #000;
 }
 
+/* Remove borders for intermediate rows */
 .cart .tr:not(:first-of-type):not(:last-child) {
-  border-bottom: none; /* No border for intermediate rows */
+  border-bottom: none;
 }
 
+/* Add bottom border to last row (total) */
 .cart .tr:last-child {
-  border-bottom: 2px solid #000; /* Add border for total row */
+  border-bottom: 2px solid #000;
 }
 
+/* Text alignment and flex sizing for cart item cells */
 .cart .tr div {
-  /* padding: 0 10px; */
   text-align: center;
 }
 
-.cart .tr > div {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-}
-
+/* Flex grow for specific columns */
+/* 1st column: checkbox */
 .cart .tr div:nth-child(1) {
-  flex: 1; /* Checkbox */
+  flex: 1;
 }
 
+/* 2nd column: product image */
 .cart .tr div:nth-child(2) {
-  flex: 2; /* Image */
+  flex: 2;
 }
 
+/* Image styling */
 .cart .tr div:nth-child(2) img {
   max-width: 60px;
   height: auto;
   border-radius: 4px;
 }
 
+/* 3rd column: product name, left aligned */
 .cart .tr div:nth-child(3) {
-  flex: 4; /* Product name */
+  flex: 4;
   text-align: left;
 }
 
+/* 4th column: price, right aligned */
 .cart .tr div:nth-child(4) {
-  flex: 2; /* Price,*/
+  flex: 2;
   text-align: right;
   padding-right: 2rem;
 }
+
+/* 5th and 6th columns: quantity controls and delete button */
 .cart .tr div:nth-child(5),
 .cart .tr div:nth-child(6) {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 2; /* Price, Quantity, Total */
+  flex: 2;
 }
 
+/* Quantity input box styling */
 .cart .tr div:nth-child(5) input {
   width: 40px;
   height: 30px;
@@ -134,12 +169,14 @@
   margin: 0 auto;
 }
 
+/* Delete icon styling */
 .cart .tr div:nth-child(6) .trash-outline {
   color: #d9534f;
   cursor: pointer;
   font-size: 1.5rem;
 }
 
+/* Quantity change buttons styling */
 .quantity-change {
   font-size: 1.5rem;
   color: #333;
@@ -147,7 +184,9 @@
   cursor: pointer;
 }
 
-/* Total Row Styling */
+/* ================================
+   Total Row Styling
+   ================================ */
 .cart .tr-total {
   display: flex;
   justify-content: space-between;
@@ -156,34 +195,44 @@
   padding: 10px 0;
 }
 
-/* Align Icons Better */
+/* ================================
+   Form Controls and Icons
+   ================================ */
+/* Checkbox sizing and centering */
 input[type="checkbox" i] {
   width: 1.2rem;
   height: 1.2rem;
   margin: auto;
 }
 
+/* Trash icon large size and pointer cursor */
 .trash-outline {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #d9534f;
   cursor: pointer;
 }
 
+/* Close icon styling */
 .close-outline {
   font-size: 1.8rem;
   color: #333;
   cursor: pointer;
 }
 
+/* ================================
+   Footer and Place Order Button
+   ================================ */
 .footer {
   height: 5rem;
   position: relative;
 }
 
+/* Total amount text color */
 #totalAmount {
   color: #956680;
 }
 
+/* Place order button styling */
 .place-order {
   width: 14rem;
   height: 3rem;
@@ -195,14 +244,17 @@ input[type="checkbox" i] {
   position: absolute;
   left: 50%;
   top: 2rem;
-  /* bottom: -2rem; */
   transform: translateX(-50%);
 }
 
+/* Larger font size for quantity-change icons */
 .quantity-change {
   font-size: 2rem;
 }
 
+/* ================================
+   Floating Cart Icon Button
+   ================================ */
 .cart-icon {
   position: fixed;
   right: 1rem;
@@ -218,10 +270,12 @@ input[type="checkbox" i] {
   cursor: pointer;
 }
 
+/* Cart icon color */
 #cartIcon > ion-icon.cart-outline {
   color: #ffffff !important;
 }
 
+/* Notification number badge on cart icon */
 .num {
   position: absolute;
   top: -0.2rem;
@@ -237,14 +291,24 @@ input[type="checkbox" i] {
   border-radius: 50%;
 }
 
+/* Icon font sizes */
 .cart-outline {
   font-size: 2rem;
 }
+
 .trash-outline {
   font-size: 2rem;
 }
 
-/* Responsive Styling */
+/* ================================
+   Responsive Styling
+   ================================ */
+@media (max-width: 1280px) {
+  #cartPage {
+    width: 80%;
+  }
+}
+
 @media (max-width: 768px) {
   #cartPage {
     width: 90%;
@@ -261,7 +325,15 @@ input[type="checkbox" i] {
   }
 }
 
-/* Transitions and Hover Effects */
+@media (max-width: 780px) {
+  #cartPage {
+    width: 100%;
+  }
+}
+
+/* ================================
+   Transitions and Hover Effects
+   ================================ */
 .cart-icon:hover,
 .cart-shut:hover,
 .place-order:hover {
@@ -269,18 +341,8 @@ input[type="checkbox" i] {
   transition: background-color 0.3s ease;
 }
 
+/* Checkbox hover scale effect */
 input[type="checkbox"]:hover {
   transform: scale(1.2);
   transition: transform 0.2s ease-in-out;
-}
-
-@media screen and (max-width: 1280px) {
-  #cartPage {
-    width: 80%;
-  }
-}
-@media screen and (max-width: 780px) {
-  #cartPage {
-    width: 100%;
-  }
 }
