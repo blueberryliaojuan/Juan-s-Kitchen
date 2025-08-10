@@ -279,7 +279,7 @@ class Cart {
     }
 
     const discountedPrice = originalPrice - discountAmount;
-    const tax = discountedPrice * taxRate; // Assume 5% tax
+    const tax = discountedPrice * this.taxRate; // Assume 5% tax
     const finalPrice = discountedPrice + tax;
 
     // Update UI elements with calculated values
