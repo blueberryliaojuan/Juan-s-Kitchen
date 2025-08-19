@@ -89,6 +89,14 @@ tabMenu.addEventListener("click", (e) => {
   const clicked = e.target.closest("a");
   if (!clicked) return;
 
+  // when clicked, close the cart if it's open
+  const cartPage = document.querySelector("#cartPage");
+  cartPage?.classList.remove("show");
+  cartPage?.classList.add("shut");
+  const suggestionPage = document.querySelector("#suggestionPage");
+  suggestionPage.style.display = "none"; // Hide panel
+  suggestionPage.classList.remove("show"); // Remove show (visible) class
+
   tabLinks.forEach((link) => link.classList.remove("active"));
   clicked.classList.add("active");
 
