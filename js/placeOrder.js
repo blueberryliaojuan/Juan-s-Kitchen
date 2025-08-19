@@ -1,21 +1,36 @@
-// 获取元素
-const modal = document.getElementById("orderPlacedModal");
+/**
+ * File: orderPlacedModal.js
+ * Description: Handles opening and closing of the "Order Placed" modal.
+ * Author: Juan Liao
+ * Created: 2025-08
+ */
+
+// ================================
+// Get DOM elements
+// ================================
+const orderPlacedModal = document.getElementById("orderPlacedModal");
 const checkoutBtn = document.getElementById("checkoutBtn");
-const closeBtn = document.getElementById("closeOrderPlacedBtn");
+const closeOrderPlacedBtn = document.getElementById("closeOrderPlacedBtn");
 
-// 打开 modal
+// ================================
+// Open modal when clicking the checkout button
+// ================================
 checkoutBtn.addEventListener("click", () => {
-  modal.style.display = "flex";
+  orderPlacedModal.style.display = "flex";
 });
 
-// 关闭 modal
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
+// ================================
+// Close modal when clicking the close button
+// ================================
+closeOrderPlacedBtn.addEventListener("click", () => {
+  orderPlacedModal.style.display = "none";
 });
 
-// 可选：点击背景关闭
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
+// ================================
+// Close modal when clicking the background overlay
+// ================================
+orderPlacedModal.addEventListener("click", (e) => {
+  if (e.target === orderPlacedModal) {
+    orderPlacedModal.style.display = "none";
   }
 });
