@@ -6,15 +6,47 @@
  */
 
 :root {
-  /* DineOrder 主题色 */
-  --dineOrder-primary-color: #956680; /* 主色，用于按钮、标题等 */
-  --dineOrder-secondary-color: #ab957e; /* 辅助色，用于背景或悬停效果 */
-  --dineOrder-text-color: #333333; /* 主文本色 */
-  --dineOrder-background-color: #ebe3e0; /* 背景色 */
-  --dineOrder-btn-bg-color: #956680; /* 按钮背景色 */
-  --dineOrder-btn-text-color: #fff; /* 按钮文字色 */
-  --dineOrder-btn-hover-color: #ab957e; /* 按钮悬停色 */
-  --dineOrder-link-color: #956680; /* 链接颜色 */
+  /* DineOrder Theme Colors, the last set of variant will take effect */
+
+  /* Variant 1 */
+  --dineOrder-primary-color: #931f1d; /* Primary color: for buttons, headings, etc. */
+  --dineOrder-secondary-color: #937b63; /* Secondary color: for backgrounds or hover effects */
+  --dineOrder-text-color: #333333; /* Main text color */
+  --dineOrder-background-color: #d5ddbc; /* Background color */
+  --dineOrder-btn-bg-color: #931f1d; /* Button background color */
+  --dineOrder-btn-text-color: #fff; /* Button text color */
+  --dineOrder-btn-hover-color: #937b63; /* Button hover color */
+  --dineOrder-link-color: #8a9b68; /* Link color */
+
+  /* Variant 2 */
+  --dineOrder-primary-color: #f05d5e; /* Primary color: for buttons, headings, etc. */
+  --dineOrder-secondary-color: #0f7173; /* Secondary color: for backgrounds or hover effects */
+  --dineOrder-text-color: #272932; /* Main text color */
+  --dineOrder-background-color: #ecd3c1; /* Background color */
+  --dineOrder-btn-bg-color: #f05d5e; /* Button background color */
+  --dineOrder-btn-text-color: #e7ecef; /* Button text color */
+  --dineOrder-btn-hover-color: #0f7173; /* Button hover color */
+  --dineOrder-link-color: #d8a47f; /* Link color */
+
+  /* Variant 3 */
+  --dineOrder-primary-color: #638475; /* Primary color: for buttons, headings, etc. */
+  --dineOrder-secondary-color: #90e39a; /* Secondary color: for backgrounds or hover effects */
+  --dineOrder-text-color: #272932; /* Main text color */
+  --dineOrder-background-color: #f4fadb; /* Background color */
+  --dineOrder-btn-bg-color: #638475; /* Button background color */
+  --dineOrder-btn-text-color: #f4fadb; /* Button text color */
+  --dineOrder-btn-hover-color: #90e39a; /* Button hover color */
+  --dineOrder-link-color: #ce4760; /* Link color */
+
+  /* Variant 4 */
+  --dineOrder-primary-color: #956680; /* Primary color: for buttons, headings, etc. */
+  --dineOrder-secondary-color: #ab957e; /* Secondary color: for backgrounds or hover effects */
+  --dineOrder-text-color: #333333; /* Main text color */
+  --dineOrder-background-color: #ebe3e0; /* Background color */
+  --dineOrder-btn-bg-color: #956680; /* Button background color */
+  --dineOrder-btn-text-color: #fff; /* Button text color */
+  --dineOrder-btn-hover-color: #ab957e; /* Button hover color */
+  --dineOrder-link-color: #956680; /* Link color */
 }
 
 /* ===============================
