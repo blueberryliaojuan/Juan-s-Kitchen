@@ -75,7 +75,7 @@ class Cart {
           <div class="col-2 text-end">${item.price}</div>
           <div class="col-2 d-flex justify-content-center align-items-center gap-2">
             <button type="button" class="custom-btn quantity-decrease" aria-label="Decrease quantity">
-              <ion-icon name="remove-circle-outline"></ion-icon>
+              <ion-icon name="remove" size="medium"></ion-icon>
             </button>
             <input
               type="text"
@@ -87,12 +87,12 @@ class Cart {
               };"
             />
             <button type="button" class="custom-btn quantity-increase" aria-label="Increase quantity">
-              <ion-icon name="add-circle-outline"></ion-icon>
+              <ion-icon name="add" size="medium"></ion-icon>
             </button>
           </div>
-          <div class="col-1 text-center">
+          <div class="col-1  d-flex justify-content-center align-items-center">
             <button type="button" class="custom-btn text-danger delete-item p-0" aria-label="Delete item">
-              <ion-icon name="trash-outline"></ion-icon>
+              <ion-icon name="trash" size="small"></ion-icon>
             </button>
           </div>
         </div>`;
@@ -137,22 +137,19 @@ class Cart {
       }
 
       // Quantity buttons (increase or decrease)
-      else if (
-        e.target.name === "remove-circle-outline" ||
-        e.target.name === "add-circle-outline"
-      ) {
+      else if (e.target.name === "remove" || e.target.name === "add") {
         const item = self.goods.find((g) => g.id === id);
         if (!item) return;
 
         // Increase or decrease quantity, but not below 0
-        const delta = e.target.name === "add-circle-outline" ? 1 : -1;
+        const delta = e.target.name === "add" ? 1 : -1;
         item.num = Math.max(0, item.num + delta);
 
         self.editItemProperty(id, "num", item.num);
       }
 
       // Delete item button
-      else if (e.target.name === "trash-outline") {
+      else if (e.target.name === "trash") {
         self.deleteItem(id);
       }
     });

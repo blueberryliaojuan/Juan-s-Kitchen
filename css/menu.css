@@ -81,6 +81,12 @@ main.content {
 .card-case {
   width: 100%; /* Full width container */
 }
+/* ===============================
+   Card Text Height Fix
+   =============================== */
+.card-text {
+  height: 3rem; /* Fixed height for card text */
+}
 
 /* Responsive image inside card */
 .card-case img {

@@ -28,14 +28,14 @@ const generateCardContent = (arr) => `
       .map(
         (item) => `
       <div class="col">
-        <div class="card shadow-sm rounded-4 position-relative" 
+        <div class="card shadow-sm rounded-2 position-relative" 
              data-url="${item.urls}" 
              data-id="${item.id}" 
              data-title="${item.title}" 
              data-price="${item.price}">
           <img src="${item.urls}" alt="${
           item.title || "Dish"
-        }" class="card-img-top rounded-top-4" />
+        }" class="card-img-top rounded-top-2" />
           <div class="card-body pb-4">
            <div class="card-intro">
             <h5 class="card-title fw-bold mb-2">${
@@ -49,8 +49,8 @@ const generateCardContent = (arr) => `
               <div class="text-primary fw-semibold fs-5">${item.price}</div>
             </div>
           </div>
-          <button class="custom-btn  add-to-cart" title="Add to Cart">
-            <ion-icon name="add" ></ion-icon>
+          <button class="custom-btn add-to-cart" title="Add to Cart">
+            <ion-icon name="add" size="medium"></ion-icon>
           </button>
         </div>
       </div>

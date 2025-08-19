@@ -1,15 +1,24 @@
 /**
- * common.css
+ * styles.css
  *
- * Common CSS styles shared across all pages.
+ * Global styles including fonts, backgrounds, buttons, navbar, layout,
+ * cart panel, sidebar menu, suggestion panel, modal, and responsive design.
  */
 
 /* ===============================
-   Body and Headings
+   Fonts and Background
    =============================== */
+
+* {
+  box-sizing: border-box;
+}
 body {
-  background-color: #fff;
   font-family: "Lato", sans-serif;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -18,109 +27,463 @@ h3 {
   font-family: "Playfair Display", serif;
 }
 
+h5.text-primary {
+  font-family: "Playfair Display", serif;
+}
+
+/* ===============================
+   Bootstrap Overrides
+   =============================== */
+.text-primary {
+  color: #956680 !important;
+}
+
+.btn-outline-danger {
+  padding: 0.4rem 1rem !important;
+  border: 1px solid #956680 !important;
+  color: #956680 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-outline-danger span {
+  margin-left: 0.4rem;
+}
+#cartPage > #cartClear > .btn-outline-danger > ion-icon.close,
+ion-icon {
+  color: #956680 !important;
+}
+
 /* ===============================
    Navigation Bar Styles
    =============================== */
-nav {
+nav,
+.navbar {
   background-color: #fff;
 }
 
 .navbar {
-  background-color: #fff; /* Set navbar background color */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow under navbar */
-  z-index: 1000; /* Make sure navbar is on top */
-  border-bottom: 1px solid #ddd; /* Border line at bottom of navbar */
-  height: 7rem; /* Fixed height */
-}
-
-/* Logo size */
-.navbar .logo {
-  height: 3rem; /* Fixed height for logo */
-  width: auto; /* Maintain aspect ratio */
-}
-
-/* Call server button */
-.call-server {
-  border: none;
-  width: 10rem;
-  height: 3rem;
-  line-height: 3rem;
-  background-color: #ab957e; /* Custom button background */
-  color: #fff;
-  text-align: center;
-  cursor: pointer;
-}
-
-/* ===============================
-   Footer Styles
-   =============================== */
-#footer {
-  width: 100%;
-  background: #fff;
-  text-align: center;
-  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
   height: 7rem;
 }
 
-footer {
-  padding-top: 1rem;
+.navbar .logo {
+  height: 3rem;
+  width: auto;
+}
+
+.app-title {
+  color: #956680;
 }
 
 /* ===============================
-   Navigation Links Styling
+   Buttons
    =============================== */
-.nav-link {
-  color: #dcbdae; /* Link color */
-}
 
-.nav-link:visited {
-  color: #dcbdae; /* Visited link color same as normal */
-}
-
-/* Active nav pills */
-.nav-pills .nav-link.active {
-  background-color: #ab957e; /* Active tab background */
-}
-
-/* Fullpage.js navigation dots styling */
-#fp-nav ul li a span,
-.fp-slidesNav ul li a span {
-  background-color: #ab957e; /* Active dot color */
-}
-
-/* Navbar nav active and show states */
-.navbar-nav .nav-link.active,
-.navbar-nav .nav-link.show {
-  background-color: #ab957e;
-  color: #fff; /* White text on active nav */
-}
-
-/* ===============================
-   Button Primary Styles
-   =============================== */
-.btn-primary {
-  background-color: #956680; /* Primary button color */
+.action-btn {
+  background-color: #956680;
+  color: white;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.action-btn span {
+  margin-left: 0.4rem;
+  color: white;
 }
 
-.btn-primary:hover {
-  background-color: #ab957e; /* Hover color */
+.action-btn:hover {
+  background-color: #ab957e;
+  color: white;
 }
 
-.btn-primary:visited {
-  background-color: #956680; /* Visited button color */
+.action-btn:visited {
+  background-color: #956680;
+  color: white;
+}
+
+.table-info {
+  width: 100%;
+  background-color: #eae3e0;
+  border-radius: 0.375rem;
+  border: 1px solid #956680;
+  margin-bottom: 40px;
+  color: #956680;
+  font-weight: 900;
+}
+#suggestion > .table-info > ion-icon {
+  color: #956680 !important;
+}
+
+.table-info span {
+  margin-left: 0.4rem;
+  color: #956680;
+}
+
+.btn-call-server {
+  font-size: 18px;
+}
+
+.custom-btn {
+  width: 2rem;
+  height: 2rem;
+  background-color: #956680;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #ab957e;
+  color: white;
+}
+
+.add-to-cart {
+  width: 2.4rem;
+  height: 2.4rem;
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #956680;
+  color: #fff;
 }
 
 /* ===============================
-   Card Text Height Fix
+   Main Layout & Content
    =============================== */
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  padding-top: 7rem;
+}
+
+.content {
+  height: calc(100vh - 7rem);
+  width: 84%;
+  overflow-y: auto;
+  background-color: #ebe3e0;
+  padding-bottom: 4rem;
+}
+
+/* ===============================
+   Sidebar Menu
+   =============================== */
+.tab-menu {
+  width: 16%;
+  height: 100%;
+  box-sizing: border-box;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.tab-menu .nav-link {
+  font-weight: 900;
+  color: #333;
+  transition: all 0.3s ease;
+  padding: 0.8rem 1rem;
+  font-size: 20px;
+  color: #956680;
+}
+
+.tab-menu .nav-link:hover,
+.tab-menu .nav-link.active {
+  background-color: #ab957e;
+  color: #fff;
+  font-weight: 900;
+}
+
+/* ===============================
+   Card
+   =============================== */
+.card-case {
+  width: 100%;
+}
+
+.card-title {
+  height: 3rem;
+}
 .card-text {
-  height: 3rem; /* Fixed height for card text */
+  height: 3rem;
+}
+
+.card-case img {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  position: relative;
 }
 
 /* ===============================
-   Ion Icon Color Override
+   Suggestion Panel
    =============================== */
+.suggestion,
+.suggestion-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#suggestion-icon {
+  background-color: #956680;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  margin-top: 20px;
+}
+
+.suggestion h4,
+.suggestion-panel h3,
+.suggestion-panel h5 {
+  font-weight: 900;
+  text-align: center;
+}
+
+.suggestion p {
+  text-align: center;
+}
+
+#suggestionBtn {
+  margin: 20px auto 40px;
+}
+
+.suggestion-panel {
+  height: calc(100vh - 7rem);
+  width: 84%;
+  background-color: #eae3e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1070;
+  padding: 0 40px;
+}
+
+.suggestion-shutter-case {
+  height: 68px;
+  margin-bottom: 40px;
+}
+
+.suggestion-content {
+  padding: 0 80px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback-case {
+  padding: 0 160px;
+}
+
+.emoji-btn {
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.emoji-btn small {
+  font-size: 1.2rem;
+}
+
+.emoji-btn.active {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 3px #a37886);
+}
+
+.shut-panel-icon {
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+}
+
+/* ===============================
+   Cart Panel
+   =============================== */
+
+#cartPage {
+  width: 84%;
+  height: calc(100vh - 7rem);
+  padding: 0 40px 80px;
+  background-color: #ebe3e0 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1050;
+  overflow-y: auto;
+}
+
+.cart-close {
+  height: 68px;
+  margin-bottom: 40px;
+}
+
+/* Cart Items */
+.cart {
+  padding: 10px;
+  margin-top: 20px;
+  /* overflow-y: auto; */
+}
+
+.col-2 img {
+  height: 3rem;
+}
+
+/* Total row */
+.cart .tr-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: 10px 0;
+}
+.border-bottom {
+  border-bottom: 1px solid #956680 !important;
+}
+.coupon-section {
+  display: flex;
+}
+.coupon-section input {
+  border: 1px solid #956680;
+  border-radius: 0.325rem;
+  margin-right: 4px;
+}
+/* Footer and Place Order */
+#totalAmount {
+  color: #956680;
+}
+.place-order {
+  width: 14rem;
+  height: 3rem;
+  line-height: 3rem;
+  background-color: #ab957e;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 2rem;
+  transform: translateX(-50%);
+}
+
+/* Floating Cart Icon */
+.cart-icon {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  background-color: #ab957e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1060;
+  transition: background-color 0.3s ease;
+}
+
+.cart-icon:hover {
+  background-color: #956680;
+}
+
+.num {
+  position: absolute;
+  top: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #956680;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+#cartIcon > ion-icon.cart-outline,
 ion-icon {
-  color: #ab957e !important; /* Custom icon color */
+  color: white !important;
+}
+
+/* ===============================
+   Modal
+   =============================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ===============================
+   Show/Hide
+   =============================== */
+.show {
+  display: block !important;
+}
+.shut {
+  display: none !important;
+}
+
+/* ===============================
+   Animations
+   =============================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#cartPage {
+  animation: fadeIn 0.3s ease;
+}
+.cart-panel {
+  animation: fadeIn 0.3s ease;
 }

@@ -38,7 +38,6 @@ h3 {
   border: none;
   color: white;
   border-radius: 50%;
-  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,33 +56,6 @@ h3 {
   position: absolute;
   right: 0.8rem;
   bottom: 0.8rem;
-}
-
-/* Call server button styles */
-.btn-call-server {
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-call-server span {
-  margin-left: 0.4rem;
-}
-
-.btn-call-server,
-.btn-checkout {
-  background-color: #ab957e;
-  border: none;
-  color: white;
-  padding: 0.4rem 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.btn-call-server:hover,
-.btn-checkout:hover {
-  background-color: #956680;
-  color: white;
 }
 
 /* Quantity and delete button sizes */
@@ -136,8 +108,8 @@ h3 {
 }
 
 .tab-menu .nav-link {
-  color: #333;
-  font-weight: 500;
+  color: #956680;
+  font-weight: 900;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -222,7 +194,7 @@ h3 {
   height: calc(100vh - 7rem);
   width: 84%;
   padding: 0 20px;
-  background: linear-gradient(135deg, #f9f9f9, #eaeaea);
+  background-color: #ebe3e0 !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1050;
   overflow-y: auto;

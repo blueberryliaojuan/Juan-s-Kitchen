@@ -28,7 +28,7 @@
     <meta name="author" content="Juan Liao" />
     <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
 
-    <title>Juan's Kitchen - Online Menu & Ordering System</title>
+    <title>Table Ordering System</title>
 
     <!-- Bootstrap CSS for responsive design and styling -->
     <link
@@ -45,7 +45,7 @@
     />
 
     <!-- Custom stylesheets -->
-    <link rel="stylesheet" href="./css/custom.css" />
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
 
   <body>
@@ -53,7 +53,7 @@
     <nav
       class="navbar navbar-expand-lg fixed-top navbar-custom shadow-sm px-4 d-flex justify-content-between align-items-center"
     >
-      <a href="/" class="navbar-brand p-0">
+      <!-- <a href="/" class="navbar-brand p-0">
         <img
           src="./img/logo.png"
           alt="Juan's Kitchen Logo"
@@ -62,9 +62,14 @@
           width="120"
           height="60"
         />
-      </a>
-      <button type="button" class="btn btn-call-server" aria-label="Call us">
-        <ion-icon name="call-outline" size="large"></ion-icon>
+      </a> -->
+      <h1 class="app-title">DineOrder</h1>
+      <button
+        type="button"
+        class="btn action-btn btn-call-server"
+        aria-label="Call us"
+      >
+        <ion-icon name="call" size="medium"></ion-icon>
         <span>Call Server</span>
       </button>
     </nav>
@@ -72,7 +77,7 @@
     <div class="main-content d-flex">
       <!-- Sidebar tab menu -->
       <div class="tab-menu" role="tablist" aria-label="Menu categories">
-        <nav class="nav flex-column py-5">
+        <nav class="nav flex-column">
           <!--
               Tab links:
               - data-id corresponds to the content section id
@@ -130,10 +135,18 @@
           >
         </nav>
 
-        <div class="suggestion" role="region" aria-labelledby="suggestionTitle">
-          <div class="table-info">Your Table No: A07</div>
+        <div
+          class="suggestion"
+          id="suggestion"
+          role="region"
+          aria-labelledby="suggestionTitle"
+        >
+          <div class="action-btn table-info">
+            <ion-icon name="restaurant" size="medium"></ion-icon>
+            <span>Table: A07</span>
+          </div>
           <div id="suggestion-icon" aria-hidden="true">
-            <ion-icon name="create-outline" size="large"></ion-icon>
+            <ion-icon name="create-outline" size="medium"></ion-icon>
           </div>
 
           <h4 id="suggestionTitle">Have Suggestions?</h4>
@@ -141,8 +154,9 @@
             Share your feedback and get <span class="p-1">5% off</span> your
             next meal.
           </p>
-          <button id="suggestionBtn" class="btn btn-checkout" type="button">
-            Send Now
+          <button id="suggestionBtn" class="btn action-btn" type="button">
+            <ion-icon name="send" size="medium"></ion-icon>
+            <span>Send Now</span>
           </button>
         </div>
       </div>
@@ -190,7 +204,7 @@
         ></div>
 
         <!-- Footer -->
-        <footer
+        <!-- <footer
           id="footer"
           class="border-top py-3 text-center bg-white mt-auto"
           role="contentinfo"
@@ -235,38 +249,34 @@
               </li>
             </ul>
           </div>
-        </footer>
+        </footer> -->
 
         <!-- Shopping Cart Panel: initially hidden -->
         <div
           id="cartPage"
-          class="cart-panel bg-light border rounded shadow position-fixed end-0 bottom-0 d-none"
+          class="cart-panel rounded shadow position-fixed end-0 bottom-0 d-none"
           role="region"
           aria-label="Shopping cart panel"
         >
           <!-- Top title and close button -->
           <div
-            class="d-flex justify-content-center align-items-center border-bottom py-3 position-relative"
+            class="cart-close d-flex justify-content-center align-items-center py-3 position-relative"
           >
-            <h5 class="mt-5 mb-5 text-primary fw-bold">Order Details</h5>
             <button
               type="button"
               id="cartShutter"
-              class="custom-btn cartShutter position-absolute top-50 end-0 translate-middle-y me-3"
+              class="custom-btn cartShutter shut-panel-icon position-absolute top-50 end-0 translate-middle-y me-3"
               aria-label="Close shopping cart"
             >
-              <ion-icon name="close-outline" size="large"></ion-icon>
+              <ion-icon name="close" size="medium"></ion-icon>
             </button>
           </div>
 
           <!-- Cart content -->
-          <div
-            class="cart-content overflow-auto px-3 py-2"
-            style="max-height: calc(100% - 120px)"
-          >
+          <div class="cart-content overflow-auto px-3 py-2">
             <!-- Header row -->
             <div
-              class="row fw-bold border-bottom pb-2 align-items-center text-center"
+              class="row fw-bold border-bottom pb-2 align-items-center text-center bold"
             >
               <div class="col-1">
                 <input
@@ -288,8 +298,15 @@
 
           <!-- Footer totals and actions -->
           <div class="cart-footer border-top px-4 py-4">
-            <div class="row fw-bold text-primary mb-2">
-              <div class="col-7 text-end">Cart total:</div>
+            <div class="row fw-bold text-primary mb-2" id="cartClear">
+              <div class="col-2 text-end">
+                <button type="button" id="delall" class="btn action-btn btn-sm">
+                  <ion-icon name="close" size="medium"></ion-icon>
+                  <span>Clear All</span>
+                </button>
+              </div>
+
+              <div class="col-5 text-end">Cart total:</div>
               <div
                 class="col-5 text-end"
                 id="amount"
@@ -310,7 +327,7 @@
                 $0.00
               </div>
             </div>
-            <div class="row fw-bold text-primary mb-2">
+            <div class="row fw-bold text-primary mb-2 pb-4 border-bottom">
               <div class="col-7 text-end">Coupon Code:</div>
 
               <div class="col-3 text-start" id="couponSection">
@@ -324,7 +341,7 @@
                   <button
                     type="button"
                     id="couponIcon"
-                    class="btn btn-outline-dark btn-sm"
+                    class="btn action-btn btn-sm"
                   >
                     Apply
                   </button>
@@ -339,10 +356,10 @@
                 $0.00
               </div>
             </div>
-            <div class="row fw-bold text-primary mb-3">
-              <div class="col-7 text-end">Total:</div>
+            <div class="row fw-bold text-primary mb-3 mt-4">
+              <div class="col-7 text-end fw-bold">Total:</div>
               <div
-                class="col-5 text-end"
+                class="col-5 text-end fw-bold"
                 id="totalAmount"
                 aria-live="polite"
                 aria-atomic="true"
@@ -351,16 +368,14 @@
               </div>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-end align-items-center">
               <button
                 type="button"
-                id="delall"
-                class="btn btn-outline-danger btn-sm"
+                class="btn action-btn btn-checkout"
+                id="checkoutBtn"
               >
-                Clear All
-              </button>
-              <button type="button" class="btn btn-checkout" id="checkoutBtn">
-                Proceed to Checkout
+                <ion-icon name="card" size="medium"></ion-icon>
+                <span>Proceed to Checkout</span>
               </button>
             </div>
           </div>
@@ -388,7 +403,7 @@
         <!-- Suggestion panel -->
         <div
           id="suggestionPage"
-          class="suggestion-panel bg-light border rounded shadow position-fixed end-0 bottom-0 d-none"
+          class="suggestion-panel border rounded shadow position-fixed end-0 bottom-0 d-none"
           role="dialog"
           aria-modal="true"
           aria-labelledby="suggestionTitle"
@@ -408,14 +423,13 @@
             <h3 class="text-center fw-bold">
               We’d love to hear your feedback! <span>🥰</span>
             </h3>
-            <p class="text-center mb-5 text-muted">
-              Let us know how your visit went — it only takes a few seconds and
-              helps us make your next experience even better.
-            </p>
+            <h5 class="text-center mb-5 mt-4 fw-semibold text-muted">
+              Let us know how your visit went.
+            </h5>
             <div class="feedback-case">
-              <h5 class="mb-3 text-center fw-semibold">
+              <!-- <h5 class="mb-3 text-center fw-semibold">
                 How was your experience?
-              </h5>
+              </h5> -->
               <div
                 class="d-flex justify-content-center gap-4 mb-4"
                 role="group"
@@ -463,7 +477,7 @@
                 </button>
               </div>
 
-              <h5 class="mb-3 fw-semibold">Anything we could improve?</h5>
+              <h5 class="mb-4 mt-5 fw-semibold">Anything we could improve?</h5>
               <textarea
                 class="form-control mb-4"
                 id="suggestionComment"
@@ -471,16 +485,16 @@
                 rows="6"
                 aria-label="Suggestions and comments"
               ></textarea>
-
-              <div class="text-center">
-                <button
-                  type="submit"
-                  id="submitSuggestion"
-                  class="btn btn-checkout"
-                >
-                  Submit now
-                </button>
-              </div>
+            </div>
+            <div class="mt-5">
+              <button
+                type="submit"
+                id="submitSuggestion"
+                class="btn action-btn"
+              >
+                <ion-icon name="send" size="medium"></ion-icon>
+                <span>Submit now</span>
+              </button>
             </div>
           </div>
         </div>
@@ -503,8 +517,13 @@
               HE88T7
             </p>
             <p>You can use it on your next visit within the next 30 days.</p>
-            <button id="closeModalBtn" class="btn btn-checkout" type="button">
-              Close
+            <button
+              id="closeModalBtn"
+              class="btn action-btn shut-panel-icon"
+              type="button"
+            >
+              <ion-icon name="close" size="medium"></ion-icon>
+              <span> Close</span>
             </button>
           </div>
         </div>

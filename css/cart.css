@@ -16,14 +16,8 @@
   position: fixed; /* Fixed position on screen */
   right: 0; /* Positioned at right edge */
   bottom: 0; /* Positioned at bottom */
-  background: linear-gradient(
-    135deg,
-    #f9f9f9,
-    #eaeaea
-  ); /* Gradient background */
   background-size: cover; /* Ensure gradient covers entire area */
   padding: 2rem; /* Internal spacing */
-  /* border-radius: 12px; */ /* Optional rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
   animation: fadeIn 0.3s ease; /* Fade-in animation on show */
   z-index: 1; /* Layer above default content */
@@ -198,12 +192,6 @@
 /* ================================
    Form Controls and Icons
    ================================ */
-/* Checkbox sizing and centering */
-input[type="checkbox" i] {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin: auto;
-}
 
 /* Trash icon large size and pointer cursor */
 .trash-outline {
@@ -300,6 +288,82 @@ input[type="checkbox" i] {
   font-size: 2rem;
 }
 
+/* ===============================
+   Floating Cart Icon Styles
+   =============================== */
+.cart-icon-pos {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.cart-icon {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  background-color: #ab957e;
+  color: white;
+  position: fixed;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1060;
+  transition: background-color 0.3s ease;
+}
+
+.cart-icon:hover {
+  background-color: #956680;
+}
+
+#cartIcon {
+  background-color: #ab957e;
+}
+
+/* Cart item count badge */
+.num {
+  position: absolute;
+  top: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #956680;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+/* Cart close button size */
+.cartShutter {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Force all ion-icons to white color */
+ion-icon {
+  color: white !important;
+}
+
+/* ===============================
+   Footer Styles
+   =============================== */
+#footer {
+  background-color: #fff;
+  height: 7rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+#footer .text-body-secondary {
+  color: #6c757d !important;
+}
+
 /* ================================
    Responsive Styling
    ================================ */
@@ -339,10 +403,4 @@ input[type="checkbox" i] {
 .place-order:hover {
   background-color: #dcbdae;
   transition: background-color 0.3s ease;
-}
-
-/* Checkbox hover scale effect */
-input[type="checkbox"]:hover {
-  transform: scale(1.2);
-  transition: transform 0.2s ease-in-out;
 }
