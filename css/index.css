@@ -116,6 +116,10 @@ nav,
   margin-bottom: 40px;
   color: #956680;
   font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
 }
 #suggestion > .table-info > ion-icon {
   color: #956680 !important;
@@ -156,10 +160,9 @@ nav,
   bottom: 0.8rem;
   cursor: pointer;
 }
-
-.add-to-cart:hover {
-  background-color: #956680;
-  color: #fff;
+.add-to-cart:visited {
+  background-color: #ab957e;
+  color: white;
 }
 
 /* ===============================
