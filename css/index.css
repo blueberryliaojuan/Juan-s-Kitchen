@@ -209,6 +209,10 @@ nav,
   color: #fff;
   font-weight: 900;
 }
+.discount {
+  color: #956680;
+  font-weight: 900;
+}
 
 /* ===============================
    Card
@@ -486,4 +490,11 @@ ion-icon {
 }
 .cart-panel {
   animation: fadeIn 0.3s ease;
+}
+
+#orderPlacedkModal {
+  z-index: 1080;
+}
+#closeOrderPlacedBtn {
+  width: 100%;
 }

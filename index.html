@@ -151,8 +151,8 @@
 
           <h4 id="suggestionTitle">Have Suggestions?</h4>
           <p>
-            Share your feedback and get <span class="p-1">5% off</span> your
-            next meal.
+            Share your feedback and get
+            <span class="p-1 discount">5% off</span> your next meal.
           </p>
           <button id="suggestionBtn" class="btn action-btn" type="button">
             <ion-icon name="send" size="medium"></ion-icon>
@@ -169,6 +169,7 @@
           role="tabpanel"
           aria-labelledby="tab-starters"
           tabindex="0"
+          hidden
         ></div>
         <div
           id="mains"
@@ -527,6 +528,30 @@
             </button>
           </div>
         </div>
+
+        <!-- place order modal -->
+        <div
+          id="orderPlacedModal"
+          class="modal-overlay"
+          style="display: none"
+          aria-modal="true"
+          aria-labelledby="orderPlacedkTitle"
+          aria-describedby="orderPlacedkDesc"
+        >
+          <div class="modal-content">
+            <p id="orderPlacedkDesc">Thank you for your order!</p>
+            <p>Items will be served shortly.</p>
+
+            <button
+              id="closeOrderPlacedBtn"
+              class="btn action-btn"
+              type="button"
+            >
+              <ion-icon name="close" size="medium"></ion-icon>
+              <span> Close</span>
+            </button>
+          </div>
+        </div>
       </main>
     </div>
 
@@ -561,5 +586,6 @@
 
     <!-- Suggestion -->
     <script type="module" src="./js/suggestion.js" defer></script>
+    <script type="module" src="./js/placeOrder.js" defer></script>
   </body>
 </html>
