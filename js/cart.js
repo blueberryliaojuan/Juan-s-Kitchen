@@ -1,210 +1,141 @@
 class Cart {
-  // Array to hold cart items; each item example:
-  // {
-  //   id: "main001",
-  //   title: "Eel Fillet",
-  //   price: "$35.00",
-  //   url: "../img/MainCourses01s.jpg",
-  //   num: 0,
-  //   checked: true,
-  // }
   goods = [];
   taxRate = 0.05;
 
-  // Cache DOM nodes used in multiple places
   goodsNode = document.getElementById("goods");
   cartPage = document.querySelector("#cartPage");
-  addToCartNodes = document.querySelectorAll(".add-to-cart");
+  cartShutter = document.getElementById("cartShutter");
+  cartIcon = document.getElementById("cartIcon");
   delallNode = document.getElementById("delall");
   selectAllNode = document.getElementById("selectAll");
   amountNode = document.getElementById("amount");
   taxAmount = document.getElementById("taxAmount");
   totalAmount = document.getElementById("totalAmount");
   cartNum = document.getElementById("cartNum");
-  cartShutter = document.getElementById("cartShutter");
-  cartIcon = document.getElementById("cartIcon");
   couponApply = document.getElementById("couponIcon");
   discountNode = document.getElementById("couponDiscountAmount");
 
-  // Predefined coupon codes with their discount percentages
   couponCodeArr = [
     { code: "HE88T7", discount: 5 },
     { code: "Happy88", discount: 12 },
     { code: "WELCOME95", discount: 5 },
   ];
-  appliedCoupon = null; // Currently applied coupon object
+  appliedCoupon = null;
 
   constructor() {
-    // Initialize cart goods from localStorage if available; else empty array
     const savedGoods = localStorage.getItem("goods");
     this.goods = savedGoods ? JSON.parse(savedGoods) : [];
-
-    // Render cart UI
     this.render();
-
-    // Setup event listeners for cart interaction
     this.addEventListeners();
-
-    // Update "Select All" checkbox state on initialization
     this.updateSelectAllCheckbox();
   }
 
-  /**
-   * Render the cart UI by generating HTML for each cart item
-   * Also update totals and save current state to localStorage
-   */
   render() {
     let html = "";
-
     this.goods.forEach((item) => {
       html += `
-        <div class="row align-items-center py-2 border-bottom" id="${item.id}">
-          <div class="col-1 text-center">
-            <input type="checkbox" name="ckboxs" value="${item.id}" ${
+      <div class="row align-items-center py-2 border-bottom" id="${item.id}">
+        <div class="col-1 text-center">
+          <input type="checkbox" name="ckboxs" value="${item.id}" ${
         item.checked ? "checked" : ""
       } />
-          </div>
-          <div class="col-2 text-center">
-            <img src="${item.url}" alt="${
+        </div>
+        <div class="col-2 text-center">
+          <img src="${item.url}" alt="${
         item.title
       }" class="img-fluid rounded cart-item-img" />
-          </div>
-          <div class="col-4 text-truncate" title="${item.title}">${
+        </div>
+        <div class="col-4 text-truncate" title="${item.title}">${
         item.title
       }</div>
-          <div class="col-2 text-end">${item.price}</div>
-          <div class="col-2 d-flex justify-content-center align-items-center gap-2">
-            <button type="button" class="custom-btn quantity-decrease" aria-label="Decrease quantity">
-              <ion-icon name="remove" size="medium"></ion-icon>
-            </button>
-            <input
-              type="text"
-              class="form-control form-control-sm text-center"
-              value="${item.num}"
-              readonly
-              style="width: 40px; color: ${
-                item.num !== 1 ? "#dc3545" : "inherit"
-              };"
-            />
-            <button type="button" class="custom-btn quantity-increase" aria-label="Increase quantity">
-              <ion-icon name="add" size="medium"></ion-icon>
-            </button>
-          </div>
-          <div class="col-1  d-flex justify-content-center align-items-center">
-            <button type="button" class="custom-btn text-danger delete-item p-0" aria-label="Delete item">
-              <ion-icon name="trash" size="small"></ion-icon>
-            </button>
-          </div>
-        </div>`;
+        <div class="col-2 text-end">${item.price}</div>
+        <div class="col-2 d-flex justify-content-center align-items-center gap-2">
+          <button type="button" class="custom-btn quantity-decrease" aria-label="Decrease quantity">
+            <ion-icon name="remove" size="medium"></ion-icon>
+          </button>
+          <input type="text" class="form-control form-control-sm text-center" value="${
+            item.num
+          }" readonly style="width:40px; color:${
+        item.num !== 1 ? "#dc3545" : "inherit"
+      }"/>
+          <button type="button" class="custom-btn quantity-increase" aria-label="Increase quantity">
+            <ion-icon name="add" size="medium"></ion-icon>
+          </button>
+        </div>
+        <div class="col-1 d-flex justify-content-center align-items-center">
+          <button type="button" class="custom-btn text-danger delete-item p-0" aria-label="Delete item">
+            <ion-icon name="trash" size="small"></ion-icon>
+          </button>
+        </div>
+      </div>`;
     });
 
     this.goodsNode.innerHTML = html;
-
-    // Update totals (count, price, tax, discount)
     this.calculateTotal();
-
-    // Persist the current cart to localStorage
     localStorage.setItem("goods", JSON.stringify(this.goods));
-
-    // Update "Select All" checkbox based on current items' state
     this.updateSelectAllCheckbox();
   }
 
-  /**
-   * Add all necessary event listeners to enable cart interactions
-   */
   addEventListeners() {
-    // Reference to this class instance for use in callbacks
-    const self = this;
-
-    // Add to cart button: add or update item quantity
-    this.addToCartNodes.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        self.saveOrUpdateItem(btn.parentNode.dataset);
-      });
-    });
-
-    // Event delegation for cart item actions (checkbox, quantity buttons, delete)
-    this.goodsNode.addEventListener("click", (e) => {
-      const rowElement = e.target.closest("[id]");
-      if (!rowElement) return; // If no parent row found, ignore
-
-      const id = rowElement.id;
-
-      // Checkbox toggle
-      if (e.target.name === "ckboxs") {
-        self.editItemProperty(id, "checked", e.target.checked);
+    // Event delegation for dynamically generated add-to-cart buttons
+    document.body.addEventListener("click", (e) => {
+      const btn = e.target.closest(".add-to-cart");
+      if (btn) {
+        const card = btn.closest(".card-item");
+        if (!card) return;
+        const { id, title, price, url } = card.dataset;
+        this.saveOrUpdateItem({ id, title, price, url });
       }
 
-      // Quantity buttons (increase or decrease)
-      else if (e.target.name === "remove" || e.target.name === "add") {
-        const item = self.goods.find((g) => g.id === id);
-        if (!item) return;
+      // Cart item controls
+      const row = e.target.closest("[id]");
+      if (!row) return;
+      const rowId = row.id;
 
-        // Increase or decrease quantity, but not below 0
+      if (e.target.name === "ckboxs") {
+        this.editItemProperty(rowId, "checked", e.target.checked);
+      } else if (e.target.name === "add" || e.target.name === "remove") {
+        const item = this.goods.find((g) => g.id === rowId);
+        if (!item) return;
         const delta = e.target.name === "add" ? 1 : -1;
         item.num = Math.max(0, item.num + delta);
-
-        self.editItemProperty(id, "num", item.num);
-      }
-
-      // Delete item button
-      else if (e.target.name === "trash") {
-        self.deleteItem(id);
+        this.editItemProperty(rowId, "num", item.num);
+      } else if (e.target.name === "trash") {
+        this.deleteItem(rowId);
       }
     });
 
-    // Select All checkbox toggle
     this.selectAllNode.addEventListener("click", (e) => {
-      self.selectAllItems(e.target.checked);
+      this.selectAllItems(e.target.checked);
     });
 
-    // Clear all items from cart
     this.delallNode.addEventListener("click", () => {
-      self.goods = [];
-      self.render();
+      this.goods = [];
+      this.render();
     });
 
-    // Close cart panel
     this.cartShutter.addEventListener("click", () => {
       this.cartPage?.classList.remove("show");
       this.cartPage?.classList.add("shut");
     });
 
-    // Open cart panel
     this.cartIcon.addEventListener("click", () => {
       this.cartPage?.classList.remove("shut");
       this.cartPage?.classList.add("show");
     });
 
-    // Apply coupon code
     this.couponApply.addEventListener("click", () => {
-      self.applyCoupon();
+      this.applyCoupon();
     });
   }
 
-  /**
-   * Add a new item to the cart or increment quantity if it exists
-   * @param {Object} data - The item data attributes (id, title, price, url)
-   */
   saveOrUpdateItem(data) {
     const index = this.goods.findIndex((item) => item.id === data.id);
-    if (index !== -1) {
-      // Item exists: increment quantity
-      this.goods[index].num++;
-    } else {
-      // New item: add to start of the goods array, default num=1, checked=true
-      this.goods.unshift({ ...data, num: 1, checked: true });
-    }
+    if (index !== -1) this.goods[index].num++;
+    else this.goods.unshift({ ...data, num: 1, checked: true });
     this.render();
   }
 
-  /**
-   * Update a specific property (like 'num' or 'checked') for a cart item by id
-   * @param {string} id - The item's unique identifier
-   * @param {string} key - Property to update
-   * @param {*} value - New value for the property
-   */
   editItemProperty(id, key, value) {
     const item = this.goods.find((item) => item.id === id);
     if (item) {
@@ -213,38 +144,23 @@ class Cart {
     }
   }
 
-  /**
-   * Remove an item from the cart by its id
-   * @param {string} id - Item id to remove
-   */
   deleteItem(id) {
     this.goods = this.goods.filter((item) => item.id !== id);
     this.render();
   }
 
-  /**
-   * Select or deselect all items in the cart
-   * @param {boolean} isSelected - true to select all, false to deselect all
-   */
   selectAllItems(isSelected) {
-    this.goods.forEach((item) => {
-      item.checked = isSelected;
-    });
+    this.goods.forEach((item) => (item.checked = isSelected));
     this.render();
   }
 
-  /**
-   * Update the state of the "Select All" checkbox based on current item selection
-   * Sets checkbox to checked, unchecked, or indeterminate
-   */
   updateSelectAllCheckbox() {
-    const totalItems = this.goods.length;
-    const checkedItems = this.goods.filter((item) => item.checked).length;
-
-    if (totalItems > 0 && checkedItems === totalItems) {
+    const total = this.goods.length;
+    const checked = this.goods.filter((item) => item.checked).length;
+    if (total > 0 && checked === total) {
       this.selectAllNode.checked = true;
       this.selectAllNode.indeterminate = false;
-    } else if (checkedItems > 0) {
+    } else if (checked > 0) {
       this.selectAllNode.checked = false;
       this.selectAllNode.indeterminate = true;
     } else {
@@ -253,45 +169,34 @@ class Cart {
     }
   }
 
-  /**
-   * Calculate and update the cart totals: quantity, original price, discount, tax, and final price
-   */
   calculateTotal() {
-    let totalQuantity = 0;
-    let originalPrice = 0;
-    let discountAmount = 0;
+    let qty = 0,
+      price = 0,
+      discountAmount = 0;
 
-    // Calculate totals only for checked items
     this.goods.forEach((item) => {
       if (item.checked) {
-        totalQuantity += item.num;
-        originalPrice += item.num * parseFloat(item.price.slice(1));
+        qty += item.num;
+        price += item.num * parseFloat(item.price.slice(1));
       }
     });
 
-    // Calculate discount if a coupon is applied
-    if (this.appliedCoupon) {
-      const discountRate = parseFloat(this.appliedCoupon.discount) / 100;
-      discountAmount = originalPrice * discountRate;
-    }
+    if (this.appliedCoupon)
+      discountAmount = price * (this.appliedCoupon.discount / 100);
 
-    const discountedPrice = originalPrice - discountAmount;
-    const tax = discountedPrice * this.taxRate; // Assume 5% tax
+    const discountedPrice = price - discountAmount;
+    const tax = discountedPrice * this.taxRate;
     const finalPrice = discountedPrice + tax;
 
-    // Update UI elements with calculated values
-    this.cartNum.textContent = totalQuantity;
-    this.amountNode.textContent = `$${originalPrice.toFixed(2)}`;
-    this.discountNode.textContent = `-$${discountAmount.toFixed(2)}`;
+    this.cartNum.textContent = qty;
+    this.amountNode.textContent = `$${price.toFixed(2)}`;
+    this.discountNode.textContent =
+      discountAmount > 0 ? `-$${discountAmount.toFixed(2)}` : "-$0.00";
     this.discountNode.style.color = discountAmount > 0 ? "green" : "inherit";
     this.taxAmount.textContent = `$${tax.toFixed(2)}`;
     this.totalAmount.textContent = `$${finalPrice.toFixed(2)}`;
   }
 
-  /**
-   * Validate and apply a coupon code entered by the user
-   * Updates the discount and recalculates totals
-   */
   applyCoupon() {
     const couponInput = document.querySelector(".coupon-input");
     const code = couponInput?.value.trim();
@@ -305,7 +210,6 @@ class Cart {
     }
 
     const matchedCoupon = this.couponCodeArr.find((c) => c.code === code);
-
     if (matchedCoupon) {
       this.appliedCoupon = matchedCoupon;
       this.discountNode.style.color = "green";
@@ -320,6 +224,4 @@ class Cart {
   }
 }
 
-// Instantiate the Cart class and render initial UI
 const mycart = new Cart();
-// mycart.render();

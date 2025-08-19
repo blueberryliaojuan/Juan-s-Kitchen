@@ -1,3 +1,5 @@
+// imgData.js
+
 export const startersArr = [
   {
     id: "app00",
@@ -132,54 +134,63 @@ export const mainsArr = [
 
 export const vegetarianArr = [
   {
+    id: "veg01",
     title: "Vegetable Spring Rolls",
     price: "$10.00",
     urls: "../img/Vegetarian01s.jpg",
     intro: "Crispy rolls stuffed with fresh vegetables.",
   },
   {
+    id: "veg02",
     title: "Stir-fried Vegetables",
     price: "$12.00",
     urls: "../img/Vegetarian02s.jpg",
     intro: "Mixed vegetables stir-fried with light seasoning.",
   },
   {
+    id: "veg03",
     title: "Cold Cowpea Salad",
     price: "$10.00",
     urls: "../img/Vegetarian03s.jpg",
     intro: "Chilled cowpeas with garlic dressing.",
   },
   {
+    id: "veg04",
     title: "Fried Okra with Green Peppers",
     price: "$10.00",
     urls: "../img/Vegetarian04s.jpg",
     intro: "Crispy okra stir-fried with green peppers.",
   },
   {
+    id: "veg05",
     title: "Spicy Tofu Pudding",
     price: "$8.00",
     urls: "../img/Vegetarian05s.jpg",
     intro: "Soft tofu in spicy chili sauce.",
   },
   {
+    id: "veg06",
     title: "Fruit Dumplings",
     price: "$9.00",
     urls: "../img/Vegetarian06s.jpg",
     intro: "Sweet dumplings filled with fresh fruit.",
   },
   {
+    id: "veg07",
     title: "Jackfruit Sticky Rice",
     price: "$14.00",
     urls: "../img/Vegetarian07s.jpg",
     intro: "Sticky rice served in ripe jackfruit.",
   },
   {
+    id: "veg08",
     title: "Chickpea Pancakes",
     price: "$12.00",
     urls: "../img/Vegetarian08s.jpg",
     intro: "Savory pancakes made from chickpea flour.",
   },
   {
+    id: "veg09",
     title: "Stir-fried Amaranth",
     price: "$9.00",
     urls: "../img/Vegetarian09s.jpg",
@@ -189,54 +200,63 @@ export const vegetarianArr = [
 
 export const dessertsArr = [
   {
+    id: "des01",
     title: "Coconut Waffles",
     price: "$6.00",
     urls: "../img/Desserts01s.jpg",
     intro: "Crispy waffles with coconut aroma.",
   },
   {
+    id: "des02",
     title: "Chocolate Cinnamon Balls",
     price: "$8.00",
     urls: "../img/Desserts02s.jpg",
     intro: "Rich chocolate balls with cinnamon spice.",
   },
   {
+    id: "des03",
     title: "Blueberry Muffins",
     price: "$4.00",
     urls: "../img/Desserts03s.jpg",
     intro: "Soft muffins bursting with blueberries.",
   },
   {
+    id: "des04",
     title: "Chocolate Pumpkin Bread",
     price: "$7.00",
     urls: "../img/Desserts04s.jpg",
     intro: "Moist bread with pumpkin and chocolate.",
   },
   {
+    id: "des05",
     title: "Mango Cake",
     price: "$8.00",
     urls: "../img/Desserts05s.jpg",
     intro: "Light sponge cake with mango flavor.",
   },
   {
+    id: "des06",
     title: "Coconut/Chocolate Egg Tart",
     price: "$8.00",
     urls: "../img/Desserts06s.jpg",
     intro: "Creamy tart with coconut or chocolate.",
   },
   {
+    id: "des07",
     title: "Sweet Fruit Dumpling",
     price: "$10.00",
     urls: "../img/Desserts07s.jpg",
     intro: "Soft dumplings filled with sweet fruit.",
   },
   {
+    id: "des08",
     title: "Pumpkin Bread",
     price: "$10.00",
     urls: "../img/Desserts08s.jpg",
     intro: "Soft bread with rich pumpkin taste.",
   },
   {
+    id: "des09",
     title: "Purple Sweet Potato and Coconut Bread",
     price: "$10.00",
     urls: "../img/Desserts09s.jpg",
@@ -246,39 +266,24 @@ export const dessertsArr = [
 
 export const drinksArr = [
   {
+    id: "drk01",
     title: "Pomegranate Wine",
     price: "$12.00",
     urls: "../img/Beverages04s.jpg",
     intro: "Sweet wine made from pomegranate fruit.",
   },
   {
+    id: "drk02",
     title: "Mulberry Smoothie",
     price: "$10.00",
     urls: "../img/Beverages03s.jpg",
     intro: "Creamy smoothie with ripe mulberries.",
   },
   {
+    id: "drk03",
     title: "Grapefruit Wine",
     price: "$12.00",
     urls: "../img/Beverages05s.jpg",
     intro: "Refreshing wine with grapefruit aroma.",
   },
-  // {
-  //   title: "Pitaya Smoothie",
-  //   price: "$10.00",
-  //   urls: "../img/Beverages01s.jpg",
-  //   intro: "Bright smoothie made from dragon fruit.",
-  // },
-  // {
-  //   title: "Mango Smoothie",
-  //   price: "$10.00",
-  //   urls: "../img/Beverages02s.jpg",
-  //   intro: "Smooth and sweet mango blend.",
-  // },
-  // {
-  //   title: "Milk Tea",
-  //   price: "$7.00",
-  //   urls: "../img/Beverages06s.jpg",
-  //   intro: "Classic milk tea with rich flavor.",
-  // },
 ];
